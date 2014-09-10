@@ -1,0 +1,5 @@
+target/
+final/
+.settings/
+
+dependency-reduced-pom.xml
