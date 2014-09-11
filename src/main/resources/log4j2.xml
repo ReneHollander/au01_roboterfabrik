@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration status="OFF">
+	<appenders>
+		<console name="ConsoleLogger" target="SYSTEM_OUT">
+			<patternlayout pattern="%d{HH:mm:ss:SSS} [%t] %-5level %logger{36} - %msg%n" />
+		</console>
+		<file name="FileLogger" fileName="logs/roboterfabrik.log">
+			<patternlayout pattern="%d{HH:mm:ss:SSS} [%t] %-5level %logger{36} - %msg%n" />
+		</file>
+		<async name="Async">
+			<appender-ref ref="FileLogger" />
+			<appender-ref ref="ConsoleLogger" />
+		</async>
+	</appenders>
+	<loggers>
+		<root level="debug">
+			<appender-ref ref="ConsoleLogger" />
+			<appender-ref ref="FileLogger" />
+		</root>
+	</loggers>
+</configuration>
