@@ -7,7 +7,7 @@ public class Part {
 
 	private static final Logger LOGGER = LogManager.getLogger(Part.class);
 
-	private int type;
+	private PartType type;
 	private int[] numbers;
 
 	public Part(PartType type, int[] numbers) {
