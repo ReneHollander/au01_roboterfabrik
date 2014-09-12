@@ -171,6 +171,7 @@
 									<artifactId>${project.artifactId}</artifactId>
 									<version>${project.version}</version>
 									<type>${project.packaging}</type>
+									<destFileName>${project.artifactId}.jar</destFileName>
 								</artifactItem>
 							</artifactItems>
 							<outputDirectory>${basedir}/final/</outputDirectory>
