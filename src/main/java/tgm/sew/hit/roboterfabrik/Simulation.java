@@ -22,6 +22,21 @@ public class Simulation {
 	private File warehousePath;
 	private File logFilePath;
 
+	/**
+	 * Erstellt eine neue Roboterfabrik simulation. Die Simulation wird mit der
+	 * start() Methode gestartet
+	 * 
+	 * @param duration
+	 *            Dauer der Simulation. 0 = unendlich
+	 * @param employeeCount
+	 *            Anzahl der Mitarbeiter die Threadees montieren
+	 * @param supplierCount
+	 *            Anzahl der Lieferanten die Teile liefern
+	 * @param warehousePath
+	 *            Pfad zum Ordner fuer das Lager
+	 * @param logFilePath
+	 *            Pfad zum Log File
+	 */
 	public Simulation(int duration, int employeeCount, int supplierCount, File warehousePath, File logFilePath) {
 		this.duration = duration;
 		this.employeeCount = employeeCount;
@@ -38,10 +53,21 @@ public class Simulation {
 		context.reconfigure();
 	}
 
+	/**
+	 * Startet die Simulation mit den einstellungen die dem Konstruktor
+	 * uebergeben worden sind
+	 */
 	public void start() {
 
 	}
 
+	/**
+	 * Main Methode fuer die Roboterfabrik <br/>
+	 * Kommandozeilenargumente:
+	 * 
+	 * @param args
+	 *            Kommandozeilenargumente
+	 */
 	public static void main(String[] args) {
 
 	}
