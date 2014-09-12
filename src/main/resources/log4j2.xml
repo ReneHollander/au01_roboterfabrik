@@ -4,7 +4,7 @@
 		<console name="ConsoleLogger" target="SYSTEM_OUT">
 			<patternlayout pattern="%d{HH:mm:ss:SSS} [%t] %-5level %logger{36} - %msg%n" />
 		</console>
-		<file name="FileLogger" fileName="logs/roboterfabrik.log">
+		<file name="FileLogger" fileName="${sys:logFilename}">
 			<patternlayout pattern="%d{HH:mm:ss:SSS} [%t] %-5level %logger{36} - %msg%n" />
 		</file>
 		<async name="Async">
