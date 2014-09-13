@@ -11,27 +11,29 @@ public enum PartType {
 	/**
 	 * Auge
 	 */
-	EYE("Auge"),
+	EYE("Auge", "auge"),
 
 	/**
 	 * Rumpf
 	 */
-	BODY("Rumpf"),
+	BODY("Rumpf", "rumpf"),
 
 	/**
 	 * Kettenantrieb
 	 */
-	CHAINDRIVE("Kettenantrieb"),
+	CHAINDRIVE("Kettenantrieb", "kettenantrieb"),
 
 	/**
 	 * Arm
 	 */
-	ARM("Arm");
+	ARM("Arm", "arm");
 
 	private String name;
+	private String filename;
 
-	PartType(String name) {
+	PartType(String name, String filename) {
 		this.name = name;
+		this.filename = filename;
 	}
 
 	/**
@@ -41,6 +43,15 @@ public enum PartType {
 	 */
 	public String getName() {
 		return this.name;
+	}
+
+	/**
+	 * Der Dateiname fuer diesen Part
+	 * 
+	 * @return Dateiname
+	 */
+	public String getFilename() {
+		return this.filename;
 	}
 
 }
