@@ -35,6 +35,8 @@ public class Simulation {
 	private File warehousePath;
 	private File logFilePath;
 
+	private Warehouser warehouser;
+
 	/**
 	 * Erstellt eine neue Roboterfabrik simulation. Die Simulation wird mit der
 	 * start() Methode gestartet
@@ -66,7 +68,25 @@ public class Simulation {
 	 * uebergeben worden sind
 	 */
 	public void start() {
-		LOGGER.info(this.toString() + " started!");
+		LOGGER.info("Starting Simulation " + this.toString() + "!");
+
+		// create new warehouser
+		this.warehouser = new Warehouser(this.warehousePath);
+
+		LOGGER.info("Sucessfully started Simulation " + this.toString());
+	}
+
+	/**
+	 * Stops the running simulation gracefully
+	 */
+	public void stop() {
+		LOGGER.info("Stopping Simulation " + this.toString() + "!");
+
+		// close warehouse to release ressources occupied by the random access
+		// files
+		this.warehouser.close();
+
+		LOGGER.info("Sucessfully stopped Simulation " + this.toString());
 	}
 
 	@Override
