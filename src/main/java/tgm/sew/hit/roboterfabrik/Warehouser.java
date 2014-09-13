@@ -1,6 +1,5 @@
 package tgm.sew.hit.roboterfabrik;
 
-import java.io.RandomAccessFile;
 import java.util.EnumMap;
 
 import org.apache.logging.log4j.LogManager;
@@ -9,6 +8,7 @@ import org.apache.logging.log4j.Logger;
 import tgm.sew.hit.roboterfabrik.part.Part;
 import tgm.sew.hit.roboterfabrik.part.PartType;
 import tgm.sew.hit.roboterfabrik.supply.Supply;
+import at.rene8888.fastcsv.FastCSV;
 
 /**
  * Der Lagermitarbeiter verwaltet das Lager (Dateien). Jede Lieferung, Anfrage
@@ -21,7 +21,14 @@ public class Warehouser {
 
 	private static final Logger LOGGER = LogManager.getLogger(Warehouser.class);
 
-	private EnumMap<PartType, RandomAccessFile> partFileMap;
+	private EnumMap<PartType, FastCSV> partFileMap;
+
+	/**
+	 * Erstellt einen neuen Lagermitarbeiter
+	 */
+	public Warehouser() {
+
+	}
 
 	/**
 	 * Der Lieferant uebergibt mit dieser Methode dem Lagermitarbeiter seine

@@ -24,6 +24,13 @@
 			<email>sschober@student.tgm.ac.at</email>
 		</developer>
 	</developers>
+	<repositories>
+		<repository>
+			<id>repo.rene8888.at</id>
+			<name>repo.rene8888.at</name>
+			<url>http://repo.rene8888.at/</url>
+		</repository>
+	</repositories>
 	<dependencies>
 		<!-- Log4J 2 dependencies -->
 		<dependency>
@@ -35,6 +42,12 @@
 			<groupId>org.apache.logging.log4j</groupId>
 			<artifactId>log4j-core</artifactId>
 			<version>2.0.2</version>
+		</dependency>
+		<!-- FastCSV RandomAccessFile csv parser -->
+		<dependency>
+			<groupId>at.rene8888</groupId>
+			<artifactId>fastcsv</artifactId>
+			<version>0.0.1</version>
 		</dependency>
 		<!-- Apache Commons -->
 		<dependency>
