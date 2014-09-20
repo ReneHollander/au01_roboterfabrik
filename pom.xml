@@ -47,7 +47,7 @@
 		<dependency>
 			<groupId>at.rene8888</groupId>
 			<artifactId>fastcsv</artifactId>
-			<version>0.0.1</version>
+			<version>0.0.2</version>
 		</dependency>
 		<!-- Apache Commons -->
 		<dependency>

@@ -89,6 +89,10 @@ public class Simulation {
 		LOGGER.info("Sucessfully stopped Simulation " + this.toString());
 	}
 
+	public Warehouser getWarehouser() {
+		return this.warehouser;
+	}
+
 	@Override
 	public String toString() {
 		return "Simulation [duration=" + duration + ", employeeCount=" + employeeCount + ", supplierCount=" + supplierCount + ", warehousePath=" + warehousePath + ", logFilePath=" + logFilePath + "]";

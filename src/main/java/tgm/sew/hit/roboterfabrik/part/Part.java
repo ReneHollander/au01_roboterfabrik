@@ -3,6 +3,8 @@ package tgm.sew.hit.roboterfabrik.part;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import at.rene8888.fastcsv.FastCSVRecord;
+
 public class Part {
 
 	private static final Logger LOGGER = LogManager.getLogger(Part.class);
@@ -26,7 +28,7 @@ public class Part {
 		return null;
 	}
 
-	public String generatePartString() {
+	public FastCSVRecord getCSVRecord() {
 		return null;
 	}
 

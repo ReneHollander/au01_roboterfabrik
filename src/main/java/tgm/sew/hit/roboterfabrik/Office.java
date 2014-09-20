@@ -1,43 +1,61 @@
 package tgm.sew.hit.roboterfabrik;
 
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 /**
- *Das Office verteilt IDs an alle Arbeiter (Employee) und Threadees.
- *Jeder Arbeiter bekommt eine eindeutige ID.
- *Jeder Threadee bekommt eine eindeutige ID.
+ * Das Office verteilt IDs an alle Arbeiter (Employee) und Threadees. Jeder
+ * Arbeiter bekommt eine eindeutige ID. Jeder Threadee bekommt eine eindeutige
+ * ID.
  * 
  * @author Simon Wortha
  */
 public class Office {
+
+	private static final Logger LOGGER = LogManager.getLogger(Office.class);
+
+	private Lock lock;
 	private int workerId;
 	private int threadeeId;
-	private static final Logger LOGGER = LogManager.getLogger(Office.class);
-	
+
 	/**
-	 * Erzeugt ein neues Office
-	 * Setzt beim Start zuerst alle IDs auf Null
+	 * Erzeugt ein neues Office Setzt beim Start zuerst alle IDs auf Null
 	 */
 	public Office() {
+		this.lock = new ReentrantLock();
 		this.workerId = 0;
 		this.threadeeId = 0;
 	}
+
 	/**
 	 * Das Office erstellt die ID für einen Worker (und zählt immer +1 dazu)
 	 * 
 	 * @return gibt einen int Wert, bzw. die ID für einen Worker zurück
 	 */
 	public int generateWorkerID() {
-		return ++workerId;
+		lock.lock();
+		workerId++;
+		int id = workerId;
+		lock.unlock();
+		LOGGER.debug("new worker-id assigned: " + id);
+		return id;
 	}
+
 	/**
 	 * Das Office erstellt die ID für einen Threadee (und zählt immer +1 dazu)
 	 * 
 	 * @return gibt einen int Wert, bzw. die ID für einen Threadde zurück
 	 */
 	public int generateThreadeeID() {
-		return ++threadeeId;
+		lock.lock();
+		threadeeId++;
+		int id = threadeeId;
+		lock.unlock();
+		LOGGER.debug("new threadeeId-id assigned: " + id);
+		return id;
 	}
 
 }
