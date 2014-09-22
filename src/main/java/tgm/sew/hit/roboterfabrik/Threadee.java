@@ -8,7 +8,7 @@ import at.rene8888.fastcsv.FastCSVRecord;
 /**
  * Der Threadee ist der Roboter, der von den Employees (Arbeitern) angefertigt
  * wird. Er besteht aus mehreren Teilen (Hier parts) die zur Zusammensetzung des
- * Roboters benötigt werden. Diese muss der Arbeiter, vorher von dem Supplier
+ * Roboters benoetigt werden. Diese muss der Arbeiter, vorher von dem Supplier
  * abholen.
  * 
  * @author Simon Wortha
@@ -27,8 +27,8 @@ public class Threadee {
 	 * @param creator
 	 *            ist der Employee der den Threadee zusammengebaut hat.
 	 * @param parts
-	 *            ist eine ArrayList, die die ganzen Teile die für den Roboter
-	 *            benötigt werden.
+	 *            ist eine ArrayList, die die ganzen Teile die fuer den Roboter
+	 *            benoetigt werden.
 	 */
 	public Threadee(int id, Employee creator, ArrayList<Part> parts) {
 		this.id = id;

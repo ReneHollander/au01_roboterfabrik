@@ -31,9 +31,9 @@ public class Office {
 	}
 
 	/**
-	 * Das Office erstellt die ID für einen Worker (und zählt immer +1 dazu)
+	 * Das Office erstellt die ID fuer einen Worker (und zaehlt immer +1 dazu)
 	 * 
-	 * @return gibt einen int Wert, bzw. die ID für einen Worker zurück
+	 * @return gibt einen int Wert, bzw. die ID fuer einen Worker zurueck
 	 */
 	public int generateWorkerID() {
 		lock.lock();
@@ -45,9 +45,9 @@ public class Office {
 	}
 
 	/**
-	 * Das Office erstellt die ID für einen Threadee (und zählt immer +1 dazu)
+	 * Das Office erstellt die ID fuer einen Threadee (und zaehlt immer +1 dazu)
 	 * 
-	 * @return gibt einen int Wert, bzw. die ID für einen Threadde zurück
+	 * @return gibt einen int Wert, bzw. die ID fuer einen Threadde zurueck
 	 */
 	public int generateThreadeeID() {
 		lock.lock();
