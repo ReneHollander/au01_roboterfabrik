@@ -89,6 +89,11 @@ public class Simulation {
 		LOGGER.info("Sucessfully stopped Simulation " + this.toString());
 	}
 
+	/**
+	 * The Warehouser used by the current Simulation
+	 * 
+	 * @return Warehouser in the current Simulation
+	 */
 	public Warehouser getWarehouser() {
 		return this.warehouser;
 	}

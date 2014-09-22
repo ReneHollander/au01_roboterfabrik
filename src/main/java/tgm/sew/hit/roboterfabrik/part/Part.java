@@ -2,9 +2,6 @@ package tgm.sew.hit.roboterfabrik.part;
 
 import java.util.Arrays;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 import at.rene8888.fastcsv.FastCSVRecord;
 
 /**
@@ -15,8 +12,6 @@ import at.rene8888.fastcsv.FastCSVRecord;
  *
  */
 public class Part {
-
-	private static final Logger LOGGER = LogManager.getLogger(Part.class);
 
 	private PartType type;
 	private int[] numbers;
@@ -58,10 +53,17 @@ public class Part {
 	}
 
 	/**
-	 * @return
+	 * Erstellt einen CSV Record der in das Lager geschrieben wird
+	 * 
+	 * @return CSV Record
 	 */
 	public FastCSVRecord getCSVRecord() {
-		return null;
+		FastCSVRecord record = new FastCSVRecord();
+		record.addField(this.getPartType().getName());
+		for (int i : this.numbers) {
+			record.addField(String.valueOf(i));
+		}
+		return record;
 	}
 
 	@Override

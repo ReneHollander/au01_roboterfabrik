@@ -3,27 +3,23 @@ package tgm.sew.hit.roboterfabrik;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-public class Employee implements Runnable {
+import tgm.sew.hit.roboterfabrik.watchdog.AbstractWatchable;
+
+public class Employee extends AbstractWatchable {
 
 	private static final Logger LOGGER = LogManager.getLogger(Employee.class);
 
-	private boolean running;
 	private Simulation sim;
 	private int id;
 
 	public Employee(Simulation sim, int id) {
 		this.id = id;
-		this.running = true;
 	}
 
 	public void run() {
-		while (this.running) {
+		while (this.isRunning()) {
 
 		}
-	}
-
-	public void stopGracefully() {
-		this.running = false;
 	}
 
 	public int getID() {
@@ -32,7 +28,7 @@ public class Employee implements Runnable {
 
 	@Override
 	public String toString() {
-		return "Employee [running=" + running + ", id=" + id + "]";
+		return "Employee [sim=" + sim + ", id=" + id + "]";
 	}
 
 	@Override
@@ -40,7 +36,7 @@ public class Employee implements Runnable {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + id;
-		result = prime * result + (running ? 1231 : 1237);
+		result = prime * result + ((sim == null) ? 0 : sim.hashCode());
 		return result;
 	}
 
@@ -55,7 +51,10 @@ public class Employee implements Runnable {
 		Employee other = (Employee) obj;
 		if (id != other.id)
 			return false;
-		if (running != other.running)
+		if (sim == null) {
+			if (other.sim != null)
+				return false;
+		} else if (!sim.equals(other.sim))
 			return false;
 		return true;
 	}
