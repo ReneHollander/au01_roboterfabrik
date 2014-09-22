@@ -3,6 +3,7 @@ package tgm.sew.hit.roboterfabrik;
 import java.io.Closeable;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.EnumMap;
 import java.util.Map;
 
@@ -80,7 +81,17 @@ public class Warehouser implements Closeable {
 	 * @return gibt true zurueck, wenn die Lieferung erfolgreich gelagert wurde
 	 */
 	public boolean storeSupply(Supply supply) {
-		return false;
+		Part part = supply.getPart();
+		// get the csv file matching the part type
+		FastCSV currentCSV = this.partFileMap.get(part.getPartType());
+		try {
+			// serialize the part into csv format and write it to disk
+			currentCSV.pushRecord(part.getCSVRecord());
+			return true;
+		} catch (IOException e) {
+			LOGGER.error("Error while trying to store supply from supplier", e);
+			return false;
+		}
 	}
 
 	/**
@@ -106,7 +117,15 @@ public class Warehouser implements Closeable {
 	 * @return gibt true zurueck, wenn der Threadee erfolgreich gelagert wurde
 	 */
 	public boolean storeThreadee(Threadee threadee) {
-		return false;
+		try {
+			// serialize the assembled threadee into csv format and write it to
+			// disk
+			threadeeCsvFile.pushRecord(threadee.getCSVRecord());
+			return true;
+		} catch (IOException e) {
+			LOGGER.error("Error while trying to store assembled threadee", e);
+			return false;
+		}
 	}
 
 	public void close() {
