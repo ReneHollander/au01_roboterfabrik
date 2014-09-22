@@ -6,7 +6,7 @@ import tgm.sew.hit.roboterfabrik.part.Part;
  * Supply stellt dem Lieferanten Teile, welche von Part erstellt wurden, zur
  * Verfügung.
  * 
- * @author Samuel
+ * @author Samuel Schober
  *
  */
 public class Supply {

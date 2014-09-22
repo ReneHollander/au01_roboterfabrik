@@ -8,7 +8,7 @@ import at.rene8888.fastcsv.FastCSVRecord;
  * Part setzt den Typ und die ID Nummer eines Teiles/mehrerer Teile zusammen.
  * Dieses fertige Teil kann dann weiterverarbeitet werden.
  * 
- * @author Samuel
+ * @author Samuel Schober
  *
  */
 public class Part {
