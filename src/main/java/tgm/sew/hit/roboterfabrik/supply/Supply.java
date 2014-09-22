@@ -5,18 +5,34 @@ import org.apache.logging.log4j.Logger;
 
 import tgm.sew.hit.roboterfabrik.part.Part;
 
+/**
+ * Supply stellt dem Lieferanten Teile, welche von Part erstellt wurden, zur
+ * Verfügung.
+ * 
+ * @author Samuel
+ *
+ */
 public class Supply {
 
 	private static final Logger LOGGER = LogManager.getLogger(Supply.class);
 
 	private Part part;
 
-	Supply(Part part) {
-
+	/**
+	 * Das von Part erstellte Teil wird im Konstruktor initialisiert.
+	 * 
+	 * @param part
+	 *            das von Part erstellte Teil.
+	 */
+	public Supply(Part part) {
+		this.part = part;
 	}
 
+	/**
+	 * @return part wird zurueckgegeben.
+	 */
 	public Part getPart() {
-		return null;
+		return this.part;
 	}
 
 	@Override

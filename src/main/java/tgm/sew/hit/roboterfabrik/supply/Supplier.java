@@ -18,16 +18,29 @@ public class Supplier {
 
 	private boolean running;
 
+	/**
+	 * Ein Lieferanten Thread wird initialisiert.
+	 * 
+	 */
 	public Supplier() {
 		this.running = true;
 	}
 
+	/**
+	 * Waehrend ein Lieferanten Thread laeuft uebergibt er die von Supply zur
+	 * Verfuegung gestellten Teile einem Lagerarbeiter.
+	 * 
+	 */
 	public void run() {
 		while (this.running) {
 
 		}
 	}
 
+	/**
+	 * Ein Lieferanten Thread wird gestopt.
+	 * 
+	 */
 	public void stopGracefully() {
 		this.running = false;
 	}
