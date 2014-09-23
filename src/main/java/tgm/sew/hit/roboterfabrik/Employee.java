@@ -1,8 +1,12 @@
 package tgm.sew.hit.roboterfabrik;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import tgm.sew.hit.roboterfabrik.part.Part;
 import tgm.sew.hit.roboterfabrik.watchdog.AbstractWatchable;
 
 /**
@@ -30,18 +34,27 @@ public class Employee extends AbstractWatchable {
 	 *            ID für Employee
 	 */
 	public Employee(Simulation sim, int id) {
+		this.sim = sim;
 		this.id = id;
 	}
-	
+
 	public void run() {
 		while (this.isRunning()) {
-
+			ArrayList<Part> partList = sim.getWarehouser().getPartPackage();
+			if (partList != null) {
+				for (Part p : partList) {
+					Arrays.sort(p.getNumbers());
+				}
+				Threadee r2d2 = new Threadee(this.sim.getOffice().generateThreadeeID(), this, partList);
+				LOGGER.debug("Successfully assembled " + r2d2.toString());
+			}
 		}
 	}
+
 	/**
 	 * Eindeutige ID des Arbeiters
 	 * 
-	 * @return	ID des Arbeiters
+	 * @return ID des Arbeiters
 	 */
 	public int getID() {
 		return this.id;

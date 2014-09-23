@@ -36,6 +36,7 @@ public class Simulation {
 	private File logFilePath;
 
 	private Warehouser warehouser;
+	private Office office;
 
 	/**
 	 * Erstellt eine neue Roboterfabrik simulation. Die Simulation wird mit der
@@ -72,6 +73,7 @@ public class Simulation {
 
 		// create new warehouser
 		this.warehouser = new Warehouser(this.warehousePath);
+		this.office = new Office();
 
 		LOGGER.info("Sucessfully started Simulation " + this.toString());
 	}
@@ -96,6 +98,15 @@ public class Simulation {
 	 */
 	public Warehouser getWarehouser() {
 		return this.warehouser;
+	}
+
+	/**
+	 * The Office used by the current Simulation
+	 * 
+	 * @return Office in the current Simulation
+	 */
+	public Office getOffice() {
+		return this.office;
 	}
 
 	@Override
