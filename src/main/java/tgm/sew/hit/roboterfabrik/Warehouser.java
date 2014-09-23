@@ -101,8 +101,6 @@ public class Warehouser implements Closeable {
 	 * "bestellen". Der Lagermitarbeiter holt auf Anfrage das Teil aus dem Lager
 	 * und uebergibt es dem Arbeiter
 	 * 
-	 * @param partType
-	 *            Typ des Teiles das der Arbeiter will
 	 * @return Teil aus dem Lager
 	 */
 	public synchronized ArrayList<Part> getPartPackage() {
