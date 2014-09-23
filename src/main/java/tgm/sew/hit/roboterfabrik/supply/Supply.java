@@ -4,7 +4,7 @@ import tgm.sew.hit.roboterfabrik.part.Part;
 
 /**
  * Supply stellt dem Lieferanten Teile, welche von Part erstellt wurden, zur
- * Verfügung.
+ * Verfuegung.
  * 
  * @author Samuel Schober
  *
@@ -24,7 +24,9 @@ public class Supply {
 	}
 
 	/**
-	 * @return part wird zurueckgegeben.
+	 * Gibt den im Supply enthaltenen Part zurueck
+	 * 
+	 * @return part der enthaltete Part
 	 */
 	public Part getPart() {
 		return this.part;

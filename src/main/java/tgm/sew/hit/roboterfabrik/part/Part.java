@@ -18,8 +18,12 @@ public class Part {
 	private int[] numbers;
 
 	/**
+	 * Erstellt einen Part mit dem angegebenen Typ und Zahlen
+	 * 
 	 * @param type
+	 *            Typ des Parts
 	 * @param numbers
+	 *            Zahlen des Parts
 	 */
 	public Part(PartType type, int[] numbers) {
 		this.type = type;
@@ -38,16 +42,17 @@ public class Part {
 	/**
 	 * Die Nummern der einzelnen Teile
 	 * 
-	 * @return numbers
+	 * @return numbers Array aus Zahlen
 	 */
 	public int[] getNumbers() {
 		return this.numbers;
 	}
 
 	/**
-	 * Setzt die ID Nummer fuer ein (mehrere Teile z.B. bei Arm, Auge) Teil
+	 * Ueberschreibt das Zahlen Array mit dem neuen
 	 * 
 	 * @param numbers
+	 *            Array aus Zahlen
 	 */
 	public void setNumbers(int[] numbers) {
 		this.numbers = numbers;

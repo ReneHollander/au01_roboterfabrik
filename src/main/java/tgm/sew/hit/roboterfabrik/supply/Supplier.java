@@ -50,7 +50,6 @@ public class Supplier extends AbstractWatchable {
 	/**
 	 * Waehrend ein Lieferanten Thread laeuft uebergibt er die von Supply zur
 	 * Verfuegung gestellten Teile einem Lagerarbeiter.
-	 * 
 	 */
 	public void run() {
 		Thread.currentThread().setName("Supplier " + this.id);
@@ -73,7 +72,7 @@ public class Supplier extends AbstractWatchable {
 	}
 
 	private void changePartType() {
-		// Setzt den part der momentan geliefert ist auf einen zufälligen aus
+		// Setzt den part der momentan geliefert ist auf einen zufaelligen aus
 		// dem enum
 		this.currentPartType = PartType.values()[this.random.nextInt(PartType.values().length)];
 	}
