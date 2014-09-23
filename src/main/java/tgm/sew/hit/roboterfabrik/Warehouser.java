@@ -7,6 +7,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.EnumMap;
 import java.util.Map;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -29,6 +31,8 @@ public class Warehouser implements Closeable {
 	private static final Logger LOGGER = LogManager.getLogger(Warehouser.class);
 
 	private File warehousePath;
+	private EnumMap<PartType, IntegerWrapper> partCountMap;
+	private Lock partCountMapLock;
 	private EnumMap<PartType, FastCSV> partFileMap;
 	private FastCSV threadeeCsvFile;
 
@@ -40,9 +44,12 @@ public class Warehouser implements Closeable {
 	 */
 	public Warehouser(File warehousePath) {
 		this.warehousePath = warehousePath;
+		this.partCountMap = new EnumMap<PartType, IntegerWrapper>(PartType.class);
+		this.partCountMapLock = new ReentrantLock();
 		this.partFileMap = new EnumMap<PartType, FastCSV>(PartType.class);
 		// Loop through all parttype enum values
 		for (PartType partType : PartType.values()) {
+			this.partCountMap.put(partType, new IntegerWrapper(0));
 			try {
 				// create file for the current parttype
 				File partFile = new File(this.warehousePath, partType.getFilename() + ".csv");
@@ -88,6 +95,7 @@ public class Warehouser implements Closeable {
 		try {
 			// serialize the part into csv format and write it to disk
 			currentCSV.pushRecord(part.getCSVRecord());
+			this.partCountMap.get(part.getPartType()).add(1);
 			return true;
 		} catch (IOException e) {
 			LOGGER.error("Error while trying to store supply from supplier", e);
@@ -116,6 +124,7 @@ public class Warehouser implements Closeable {
 						// and add it to the package
 						// if the record is null, throw an exception to catch it
 						// later
+						this.partCountMap.get(type).add(-type.getAmountForThreadee());
 						FastCSVRecord record = csvFile.popRecord();
 						if (record == null) {
 							LOGGER.error("a needed part could not be found!");
@@ -125,6 +134,7 @@ public class Warehouser implements Closeable {
 					} else {
 						// if we need more than 1 of a part, get the correct
 						// amount and add it to the package
+						this.partCountMap.get(type).add(-type.getAmountForThreadee());
 						for (int i = 0; i < type.getAmountForThreadee(); i++) {
 							FastCSVRecord record = csvFile.popRecord();
 							if (record == null) {
@@ -156,20 +166,14 @@ public class Warehouser implements Closeable {
 			// loop through all parts and check if the correct amount is
 			// available
 			// if there is just 1 part missing, return false
+			this.partCountMapLock.lock();
 			for (PartType type : PartType.values()) {
-				FastCSV csvFile = this.partFileMap.get(type);
-				synchronized (csvFile) {
-					if (type.getAmountForThreadee() == 1) {
-						if (csvFile.hasRecord() == false) {
-							return false;
-						}
-					} else {
-						if (csvFile.hasRecords(type.getAmountForThreadee()) == false) {
-							return false;
-						}
-					}
+				if (this.partCountMap.get(type).get() < type.getAmountForThreadee()) {
+					this.partCountMapLock.unlock();
+					return false;
 				}
 			}
+			this.partCountMapLock.unlock();
 			return true;
 		} catch (Exception e) {
 			LOGGER.error("Error while trying to check if the PartPackage is available", e);
@@ -178,7 +182,7 @@ public class Warehouser implements Closeable {
 	}
 
 	/**
-	 * Wenn eine Arbeiter einen Threadee fergi gebaut hat, uebergibt er den
+	 * Wenn eine Arbeiter einen Threadee fertig gebaut hat, uebergibt er den
 	 * Threadee dem Lagermitarbeiter. Dieser lager den Threadee in der Datei
 	 * ein.
 	 * 
