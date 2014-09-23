@@ -95,6 +95,7 @@ public class Warehouser implements Closeable {
 		try {
 			// serialize the part into csv format and write it to disk
 			currentCSV.pushRecord(part.getCSVRecord());
+			// increment the counter for the corresponding part by 1
 			this.partCountMap.get(part.getPartType()).add(1);
 			return true;
 		} catch (IOException e) {
@@ -118,13 +119,14 @@ public class Warehouser implements Closeable {
 				// loop through all PartType
 				for (PartType type : PartType.values()) {
 					FastCSV csvFile = this.partFileMap.get(type);
+					// decrement the part counter by the needed amount of parts
+					this.partCountMap.get(type).add(-type.getAmountForThreadee());
 					// if we need just 1 Part, we dont go throug the loop
 					if (type.getAmountForThreadee() == 1) {
 						// pop the record from the file, deserialize the part
 						// and add it to the package
 						// if the record is null, throw an exception to catch it
 						// later
-						this.partCountMap.get(type).add(-type.getAmountForThreadee());
 						FastCSVRecord record = csvFile.popRecord();
 						if (record == null) {
 							LOGGER.error("a needed part could not be found!");
@@ -134,7 +136,6 @@ public class Warehouser implements Closeable {
 					} else {
 						// if we need more than 1 of a part, get the correct
 						// amount and add it to the package
-						this.partCountMap.get(type).add(-type.getAmountForThreadee());
 						for (int i = 0; i < type.getAmountForThreadee(); i++) {
 							FastCSVRecord record = csvFile.popRecord();
 							if (record == null) {
@@ -168,6 +169,7 @@ public class Warehouser implements Closeable {
 			// if there is just 1 part missing, return false
 			this.partCountMapLock.lock();
 			for (PartType type : PartType.values()) {
+				// simply check the counter if there is enough parts left
 				if (this.partCountMap.get(type).get() < type.getAmountForThreadee()) {
 					this.partCountMapLock.unlock();
 					return false;
