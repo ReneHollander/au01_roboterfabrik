@@ -27,6 +27,7 @@ public class Supplier extends AbstractWatchable {
 	private static final int SUPPLY_NUMBERAMOUNT = 20;
 	private static final int SUPPLY_MAXNUMBER = 999;
 
+	private long id;
 	private Random random;
 	private Simulation simulation;
 	private PartType currentPartType;
@@ -36,8 +37,11 @@ public class Supplier extends AbstractWatchable {
 	 * 
 	 * @param simulation
 	 *            Simulation in der dieser Supplier laeuft
+	 * @param id
+	 *            Id des Liefernten
 	 */
-	public Supplier(Simulation simulation) {
+	public Supplier(Simulation simulation, long id) {
+		this.id = id;
 		this.random = new Random();
 		this.simulation = simulation;
 		this.changePartType();
@@ -49,6 +53,7 @@ public class Supplier extends AbstractWatchable {
 	 * 
 	 */
 	public void run() {
+		Thread.currentThread().setName("Supplier " + this.id);
 		while (this.isRunning()) {
 			// verwende zufallszahl um den momentan gelieferten part zu wechseln
 			if (this.random.nextInt(SUPPLY_CHANGE_POSSIBILITY) == 0) {
@@ -71,6 +76,36 @@ public class Supplier extends AbstractWatchable {
 		// Setzt den part der momentan geliefert ist auf einen zufälligen aus
 		// dem enum
 		this.currentPartType = PartType.values()[this.random.nextInt(PartType.values().length)];
+	}
+
+	@Override
+	public String toString() {
+		return "Supplier [id=" + id + ", currentPartType=" + currentPartType + "]";
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((currentPartType == null) ? 0 : currentPartType.hashCode());
+		result = prime * result + (int) (id ^ (id >>> 32));
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Supplier other = (Supplier) obj;
+		if (currentPartType != other.currentPartType)
+			return false;
+		if (id != other.id)
+			return false;
+		return true;
 	}
 
 }

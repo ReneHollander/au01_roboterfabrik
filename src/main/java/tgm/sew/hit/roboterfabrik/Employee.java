@@ -12,8 +12,8 @@ import tgm.sew.hit.roboterfabrik.watchdog.AbstractWatchable;
 /**
  * Der Arbeiter (Employee) baut den Roboter zusammen. (wird simuliert in dem Er
  * zahlen ordnet) Er bekommt eine ID vom Office zugeteilt. Er holt sich die
- * Bauteile vom Lager und bring den fertigen Threadee anschließend zurück. Der
- * Arbeiter holt sich auch eine ID für den Threadee aus dem Ofiice
+ * Bauteile vom Lager und bring den fertigen Threadee anschliessend zurueck. Der
+ * Arbeiter holt sich auch eine ID fuer den Threadee aus dem Ofiice
  * 
  * @author Simon Wortha
  *
@@ -23,7 +23,7 @@ public class Employee extends AbstractWatchable {
 	private static final Logger LOGGER = LogManager.getLogger(Employee.class);
 
 	private Simulation sim;
-	private int id;
+	private long id;
 
 	/**
 	 * Erstellt einen neuen Arbeiter
@@ -31,14 +31,15 @@ public class Employee extends AbstractWatchable {
 	 * @param sim
 	 *            Simulation
 	 * @param id
-	 *            ID für Employee
+	 *            ID fuer Employee
 	 */
-	public Employee(Simulation sim, int id) {
+	public Employee(Simulation sim, long id) {
 		this.sim = sim;
 		this.id = id;
 	}
 
 	public void run() {
+		Thread.currentThread().setName("Employee " + this.id);
 		while (this.isRunning()) {
 			ArrayList<Part> partList = sim.getWarehouser().getPartPackage();
 			if (partList != null) {
@@ -47,6 +48,7 @@ public class Employee extends AbstractWatchable {
 				}
 				Threadee r2d2 = new Threadee(this.sim.getOffice().generateThreadeeID(), this, partList);
 				LOGGER.debug("Successfully assembled " + r2d2.toString());
+				this.sim.getWarehouser().storeThreadee(r2d2);
 			}
 		}
 	}
@@ -56,21 +58,20 @@ public class Employee extends AbstractWatchable {
 	 * 
 	 * @return ID des Arbeiters
 	 */
-	public int getID() {
+	public long getID() {
 		return this.id;
 	}
 
 	@Override
 	public String toString() {
-		return "Employee [sim=" + sim + ", id=" + id + "]";
+		return "Employee [id=" + id + "]";
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + id;
-		result = prime * result + ((sim == null) ? 0 : sim.hashCode());
+		result = prime * result + (int) (id ^ (id >>> 32));
 		return result;
 	}
 
@@ -84,11 +85,6 @@ public class Employee extends AbstractWatchable {
 			return false;
 		Employee other = (Employee) obj;
 		if (id != other.id)
-			return false;
-		if (sim == null) {
-			if (other.sim != null)
-				return false;
-		} else if (!sim.equals(other.sim))
 			return false;
 		return true;
 	}

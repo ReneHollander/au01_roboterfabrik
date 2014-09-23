@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.EnumMap;
 import java.util.Map;
+import java.util.Stack;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -24,13 +25,16 @@ import at.rene8888.fastcsv.FastCSVRecord;
  * 
  * @author Rene Hollander
  */
-public class Warehouser implements Closeable {
+public class BetterWarehouser implements Closeable {
 
-	private static final Logger LOGGER = LogManager.getLogger(Warehouser.class);
+	private static final Logger LOGGER = LogManager.getLogger(BetterWarehouser.class);
+
+	private static final int THRESHOLD_SIZE = 50;
 
 	private File warehousePath;
 	private EnumMap<PartType, FastCSV> partFileMap;
 	private FastCSV threadeeCsvFile;
+	private EnumMap<PartType, Stack<Part>> tempPartStorage;
 
 	/**
 	 * Erstellt einen neuen Lagermitarbeiter
@@ -38,11 +42,13 @@ public class Warehouser implements Closeable {
 	 * @param warehousePath
 	 *            Pfad zum Lager
 	 */
-	public Warehouser(File warehousePath) {
+	public BetterWarehouser(File warehousePath) {
 		this.warehousePath = warehousePath;
 		this.partFileMap = new EnumMap<PartType, FastCSV>(PartType.class);
+		this.tempPartStorage = new EnumMap<PartType, Stack<Part>>(PartType.class);
 		// Loop through all parttype enum values
 		for (PartType partType : PartType.values()) {
+			this.tempPartStorage.put(partType, new Stack<Part>());
 			try {
 				// create file for the current parttype
 				File partFile = new File(this.warehousePath, partType.getFilename() + ".csv");
@@ -84,14 +90,21 @@ public class Warehouser implements Closeable {
 	 */
 	public boolean storeSupply(Supply supply) {
 		Part part = supply.getPart();
-		FastCSV currentCSV = this.partFileMap.get(part.getPartType());
-		try {
-			// serialize the part into csv format and write it to disk
-			currentCSV.pushRecord(part.getCSVRecord());
+		Stack<Part> partStack = this.tempPartStorage.get(part.getPartType());
+		if (partStack.size() < THRESHOLD_SIZE) {
+			partStack.add(part);
 			return true;
-		} catch (IOException e) {
-			LOGGER.error("Error while trying to store supply from supplier", e);
-			return false;
+		} else {
+			// get the csv file matching the part type
+			FastCSV currentCSV = this.partFileMap.get(part.getPartType());
+			try {
+				// serialize the part into csv format and write it to disk
+				currentCSV.pushRecord(part.getCSVRecord());
+				return true;
+			} catch (IOException e) {
+				LOGGER.error("Error while trying to store supply from supplier", e);
+				return false;
+			}
 		}
 	}
 
@@ -103,74 +116,54 @@ public class Warehouser implements Closeable {
 	 * @return Teil aus dem Lager
 	 */
 	public ArrayList<Part> getPartPackage() {
-		try {
-			// check if all parts available
-			if (this.hasPartPackage()) {
-				ArrayList<Part> partPackage = new ArrayList<Part>();
-				// loop through all PartType
-				for (PartType type : PartType.values()) {
-					FastCSV csvFile = this.partFileMap.get(type);
-					// if we need just 1 Part, we dont go throug the loop
+		ArrayList<Part> partPackage = new ArrayList<Part>();
+		for (PartType type : PartType.values()) {
+			Stack<Part> partStack = this.tempPartStorage.get(type);
+			boolean found = false;
+			synchronized (partStack) {
+				if (partStack.size() >= type.getAmountForThreadee()) {
+					found = true;
 					if (type.getAmountForThreadee() == 1) {
-						// pop the record from the file, deserialize the part
-						// and add it to the package
-						// if the record is null, throw an exception to catch it
-						// laterF
-						FastCSVRecord record = csvFile.popRecord();
-						if (record == null) {
-							throw new IllegalStateException("a needed part could not be found!");
-						}
-						partPackage.add(Part.readFromCSV(record));
+						partPackage.add(partStack.pop());
 					} else {
-						// if we need more than 1 of a part, get the correct
-						// amount and add it to the package
 						for (int i = 0; i < type.getAmountForThreadee(); i++) {
-							FastCSVRecord record = csvFile.popRecord();
-							if (record == null) {
-								throw new IllegalStateException("a needed part could not be found!");
-							}
-							partPackage.add(Part.readFromCSV(record));
+							partPackage.add(partStack.pop());
 						}
-					}
-				}
-				return partPackage;
-			} else {
-				return null;
-			}
-		} catch (Exception e) {
-			// if an error occurs, print it and return null
-			LOGGER.error("Error while trying to read parts for a PartPackage", e);
-			return null;
-		}
-	}
-
-	/**
-	 * Ueberprueft ob genug Teile fuer einen Threadee vorhanden sind
-	 * 
-	 * @return true wenn alle benoetigten Teile da sind
-	 */
-	public synchronized boolean hasPartPackage() {
-		try {
-			// loop through all parts and check if the correct amount is
-			// available
-			// if there is just 1 part missing, return false
-			for (PartType type : PartType.values()) {
-				FastCSV csvFile = this.partFileMap.get(type);
-				if (type.getAmountForThreadee() == 1) {
-					if (csvFile.hasRecord() == false) {
-						return false;
 					}
 				} else {
-					if (csvFile.hasRecords(type.getAmountForThreadee()) == false) {
-						return false;
+					found = true;
+				}
+			}
+			if (found == false) {
+				FastCSV csvFile = this.partFileMap.get(type);
+				synchronized (csvFile) {
+					if (partStack.size() < THRESHOLD_SIZE / 5) {
+						for (int i = 0; i < THRESHOLD_SIZE; i++) {
+							try {
+								FastCSVRecord record = csvFile.popRecord();
+								if (record != null) {
+									partStack.add(Part.readFromCSV(record));
+								} else {
+									if (partStack.size() == 0)
+										return null;
+									break;
+								}
+							} catch (IOException e) {
+								LOGGER.error("Error while trying to read a csv record from file", e);
+							}
+						}
+					}
+					if (type.getAmountForThreadee() == 1) {
+						partPackage.add(partStack.pop());
+					} else {
+						for (int i = 0; i < type.getAmountForThreadee(); i++) {
+							partPackage.add(partStack.pop());
+						}
 					}
 				}
 			}
-			return true;
-		} catch (Exception e) {
-			LOGGER.error("Error while trying to check if the PartPackage is available", e);
-			return false;
 		}
+		return partPackage;
 	}
 
 	/**

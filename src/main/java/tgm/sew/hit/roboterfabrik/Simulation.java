@@ -1,6 +1,11 @@
 package tgm.sew.hit.roboterfabrik;
 
 import java.io.File;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 import org.apache.commons.cli.BasicParser;
 import org.apache.commons.cli.CommandLine;
@@ -14,13 +19,17 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.core.LoggerContext;
 
+import tgm.sew.hit.roboterfabrik.supply.Supplier;
+import tgm.sew.hit.roboterfabrik.watchdog.Watchable;
+import tgm.sew.hit.roboterfabrik.watchdog.Watchdog;
+
 /**
  * Simulation einer Roboterfabrik mit mehreren Arbeiter und Lieferanten.
  * Arbeiter und Lieferanten werden durch mehrere Threads simuliert
  * 
  * @author Rene Hollander
  */
-public class Simulation {
+public class Simulation implements Watchable {
 
 	static {
 		// set the logger to this path until the log path is set
@@ -34,6 +43,9 @@ public class Simulation {
 	private int supplierCount;
 	private File warehousePath;
 	private File logFilePath;
+
+	private ExecutorService threadExecutorService;
+	private Watchdog watchdog;
 
 	private Warehouser warehouser;
 	private Office office;
@@ -61,7 +73,7 @@ public class Simulation {
 		this.logFilePath = logFilePath;
 
 		// configure logger to ouput to the specified path
-		configureLogger(new File(this.logFilePath, "roboterfabrik.log"));
+		configureLogger(new File(this.logFilePath, "roboterfabrik " + LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH-mm-ss")) + ".log"));
 	}
 
 	/**
@@ -71,9 +83,26 @@ public class Simulation {
 	public void start() {
 		LOGGER.info("Starting Simulation " + this.toString() + "!");
 
-		// create new warehouser
+		// create new warehouser and Office
 		this.warehouser = new Warehouser(this.warehousePath);
 		this.office = new Office();
+
+		this.threadExecutorService = Executors.newFixedThreadPool(this.employeeCount + this.supplierCount);
+		this.watchdog = new Watchdog(this.duration);
+		for (int i = 0; i < this.employeeCount; i++) {
+			Employee employee = new Employee(this, this.getOffice().generateWorkerID());
+			LOGGER.debug("Creating " + employee.toString());
+			this.watchdog.registerWatchable(employee);
+			this.threadExecutorService.execute(employee);
+		}
+		for (int i = 0; i < this.supplierCount; i++) {
+			Supplier supplier = new Supplier(this, this.getOffice().generateSupplierID());
+			LOGGER.debug("Creating " + supplier.toString());
+			this.watchdog.registerWatchable(supplier);
+			this.threadExecutorService.execute(supplier);
+		}
+		this.watchdog.registerWatchable(this);
+		this.watchdog.startWatchdog();
 
 		LOGGER.info("Sucessfully started Simulation " + this.toString());
 	}
@@ -84,6 +113,12 @@ public class Simulation {
 	public void stop() {
 		LOGGER.info("Stopping Simulation " + this.toString() + "!");
 
+		this.threadExecutorService.shutdown();
+		try {
+			this.threadExecutorService.awaitTermination(10, TimeUnit.SECONDS);
+		} catch (InterruptedException e) {
+			LOGGER.error("Error while waiting for termination of the threads", e);
+		}
 		// close warehouse to release ressources occupied by the random access
 		// files
 		this.warehouser.close();
@@ -299,4 +334,5 @@ public class Simulation {
 		LoggerContext context = (LoggerContext) LogManager.getContext(false);
 		context.reconfigure();
 	}
+
 }

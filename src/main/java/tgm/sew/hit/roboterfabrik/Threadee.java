@@ -15,7 +15,7 @@ import at.rene8888.fastcsv.FastCSVRecord;
  */
 public class Threadee {
 
-	private int id;
+	private long id;
 	private Employee creator;
 	private ArrayList<Part> parts;
 
@@ -30,7 +30,7 @@ public class Threadee {
 	 *            ist eine ArrayList, die die ganzen Teile die fuer den Roboter
 	 *            benoetigt werden.
 	 */
-	public Threadee(int id, Employee creator, ArrayList<Part> parts) {
+	public Threadee(long id, Employee creator, ArrayList<Part> parts) {
 		this.id = id;
 		this.creator = creator;
 		this.parts = parts;
@@ -41,7 +41,7 @@ public class Threadee {
 	 * 
 	 * @return ID des Threadees
 	 */
-	public int getID() {
+	public long getID() {
 		return id;
 	}
 
@@ -88,7 +88,7 @@ public class Threadee {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((creator == null) ? 0 : creator.hashCode());
-		result = prime * result + id;
+		result = prime * result + (int) (id ^ (id >>> 32));
 		result = prime * result + ((parts == null) ? 0 : parts.hashCode());
 		return result;
 	}

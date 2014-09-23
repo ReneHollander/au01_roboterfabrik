@@ -6,7 +6,7 @@ package tgm.sew.hit.roboterfabrik.watchdog;
  * 
  * @author Samuel Schober
  */
-public abstract class AbstractWatchable implements Watchable {
+public abstract class AbstractWatchable implements Runnable, Watchable {
 
 	private boolean running;
 

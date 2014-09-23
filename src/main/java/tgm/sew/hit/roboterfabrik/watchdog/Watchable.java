@@ -6,7 +6,7 @@ package tgm.sew.hit.roboterfabrik.watchdog;
  * @author Samuel Schober
  *
  */
-public interface Watchable extends Runnable {
+public interface Watchable {
 
 	/**
 	 * Stoppt den Thread durch den Watchdog

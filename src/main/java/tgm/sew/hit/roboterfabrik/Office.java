@@ -18,8 +18,9 @@ public class Office {
 	private static final Logger LOGGER = LogManager.getLogger(Office.class);
 
 	private Lock lock;
-	private int workerId;
-	private int threadeeId;
+	private long workerId;
+	private long threadeeId;
+	private long supplierId;
 
 	/**
 	 * Erzeugt ein neues Office Setzt beim Start zuerst alle IDs auf Null
@@ -28,17 +29,18 @@ public class Office {
 		this.lock = new ReentrantLock();
 		this.workerId = 0;
 		this.threadeeId = 0;
+		this.supplierId = 0;
 	}
 
 	/**
 	 * Das Office erstellt die ID fuer einen Worker (und zaehlt immer +1 dazu)
 	 * 
-	 * @return gibt einen int Wert, bzw. die ID fuer einen Worker zurueck
+	 * @return gibt einen long Wert, bzw. die ID fuer einen Worker zurueck
 	 */
-	public int generateWorkerID() {
+	public long generateWorkerID() {
 		lock.lock();
 		workerId++;
-		int id = workerId;
+		long id = workerId;
 		lock.unlock();
 		LOGGER.debug("new worker-id assigned: " + id);
 		return id;
@@ -47,14 +49,28 @@ public class Office {
 	/**
 	 * Das Office erstellt die ID fuer einen Threadee (und zaehlt immer +1 dazu)
 	 * 
-	 * @return gibt einen int Wert, bzw. die ID fuer einen Threadde zurueck
+	 * @return gibt einen long Wert, bzw. die ID fuer einen Threadde zurueck
 	 */
-	public int generateThreadeeID() {
+	public long generateThreadeeID() {
 		lock.lock();
 		threadeeId++;
-		int id = threadeeId;
+		long id = threadeeId;
 		lock.unlock();
 		LOGGER.debug("new threadeeId-id assigned: " + id);
+		return id;
+	}
+
+	/**
+	 * Das Office erstellt die ID fuer einen Supplier (und zaehlt immer +1 dazu)
+	 * 
+	 * @return gibt einen long Wert, bzw. die ID fuer einen Supplier zurueck
+	 */
+	public long generateSupplierID() {
+		lock.lock();
+		supplierId++;
+		long id = supplierId;
+		lock.unlock();
+		LOGGER.debug("new supplierId-id assigned: " + id);
 		return id;
 	}
 
