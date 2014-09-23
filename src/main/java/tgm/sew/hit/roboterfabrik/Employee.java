@@ -4,7 +4,16 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import tgm.sew.hit.roboterfabrik.watchdog.AbstractWatchable;
-//Test
+
+/**
+ * Der Arbeiter (Employee) baut den Roboter zusammen. (wird simuliert in dem Er
+ * zahlen ordnet) Er bekommt eine ID vom Office zugeteilt. Er holt sich die
+ * Bauteile vom Lager und bring den fertigen Threadee anschließend zurück. Der
+ * Arbeiter holt sich auch eine ID für den Threadee aus dem Ofiice
+ * 
+ * @author Simon Wortha
+ *
+ */
 public class Employee extends AbstractWatchable {
 
 	private static final Logger LOGGER = LogManager.getLogger(Employee.class);
@@ -12,16 +21,28 @@ public class Employee extends AbstractWatchable {
 	private Simulation sim;
 	private int id;
 
+	/**
+	 * Erstellt einen neuen Arbeiter
+	 * 
+	 * @param sim
+	 *            Simulation
+	 * @param id
+	 *            ID für Employee
+	 */
 	public Employee(Simulation sim, int id) {
 		this.id = id;
 	}
-
+	
 	public void run() {
 		while (this.isRunning()) {
 
 		}
 	}
-
+	/**
+	 * Eindeutige ID des Arbeiters
+	 * 
+	 * @return	ID des Arbeiters
+	 */
 	public int getID() {
 		return this.id;
 	}
