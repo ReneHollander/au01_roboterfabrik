@@ -115,10 +115,11 @@ public class Warehouser implements Closeable {
 						// pop the record from the file, deserialize the part
 						// and add it to the package
 						// if the record is null, throw an exception to catch it
-						// laterF
+						// later
 						FastCSVRecord record = csvFile.popRecord();
 						if (record == null) {
-							throw new IllegalStateException("a needed part could not be found!");
+							LOGGER.error("a needed part could not be found!");
+							return null;
 						}
 						partPackage.add(Part.readFromCSV(record));
 					} else {
@@ -127,7 +128,8 @@ public class Warehouser implements Closeable {
 						for (int i = 0; i < type.getAmountForThreadee(); i++) {
 							FastCSVRecord record = csvFile.popRecord();
 							if (record == null) {
-								throw new IllegalStateException("a needed part could not be found!");
+								LOGGER.error("a needed part could not be found!");
+								return null;
 							}
 							partPackage.add(Part.readFromCSV(record));
 						}
@@ -149,20 +151,22 @@ public class Warehouser implements Closeable {
 	 * 
 	 * @return true wenn alle benoetigten Teile da sind
 	 */
-	public synchronized boolean hasPartPackage() {
+	public boolean hasPartPackage() {
 		try {
 			// loop through all parts and check if the correct amount is
 			// available
 			// if there is just 1 part missing, return false
 			for (PartType type : PartType.values()) {
 				FastCSV csvFile = this.partFileMap.get(type);
-				if (type.getAmountForThreadee() == 1) {
-					if (csvFile.hasRecord() == false) {
-						return false;
-					}
-				} else {
-					if (csvFile.hasRecords(type.getAmountForThreadee()) == false) {
-						return false;
+				synchronized (csvFile) {
+					if (type.getAmountForThreadee() == 1) {
+						if (csvFile.hasRecord() == false) {
+							return false;
+						}
+					} else {
+						if (csvFile.hasRecords(type.getAmountForThreadee()) == false) {
+							return false;
+						}
 					}
 				}
 			}
