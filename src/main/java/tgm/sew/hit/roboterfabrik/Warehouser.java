@@ -4,6 +4,7 @@ import java.io.Closeable;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.EnumMap;
 import java.util.Map;
 
@@ -14,6 +15,7 @@ import tgm.sew.hit.roboterfabrik.part.Part;
 import tgm.sew.hit.roboterfabrik.part.PartType;
 import tgm.sew.hit.roboterfabrik.supply.Supply;
 import at.rene8888.fastcsv.FastCSV;
+import at.rene8888.fastcsv.FastCSVRecord;
 
 /**
  * Der Lagermitarbeiter verwaltet das Lager (Dateien). Jede Lieferung, Anfrage
@@ -80,7 +82,7 @@ public class Warehouser implements Closeable {
 	 *            Lieferung die gelagert werden soll
 	 * @return gibt true zurueck, wenn die Lieferung erfolgreich gelagert wurde
 	 */
-	public boolean storeSupply(Supply supply) {
+	public synchronized boolean storeSupply(Supply supply) {
 		Part part = supply.getPart();
 		// get the csv file matching the part type
 		FastCSV currentCSV = this.partFileMap.get(part.getPartType());
@@ -103,8 +105,75 @@ public class Warehouser implements Closeable {
 	 *            Typ des Teiles das der Arbeiter will
 	 * @return Teil aus dem Lager
 	 */
-	public Part getPart(PartType partType) {
-		return null;
+	public synchronized ArrayList<Part> getPartPackage() {
+		try {
+			// check if all parts available
+			if (this.hasPartPackage()) {
+				ArrayList<Part> partPackage = new ArrayList<Part>();
+				// loop through all PartType
+				for (PartType type : PartType.values()) {
+					FastCSV csvFile = this.partFileMap.get(type);
+					// if we need just 1 Part, we dont go throug the loop
+					if (type.getAmountForThreadee() == 1) {
+						// pop the record from the file, deserialize the part
+						// and add it to the package
+						// if the record is null, throw an exception to catch it
+						// laterF
+						FastCSVRecord record = csvFile.popRecord();
+						if (record == null) {
+							throw new IllegalStateException("a needed part could not be found!");
+						}
+						partPackage.add(Part.readFromCSV(record));
+					} else {
+						// if we need more than 1 of a part, get the correct
+						// amount and add it to the package
+						for (int i = 0; i < type.getAmountForThreadee(); i++) {
+							FastCSVRecord record = csvFile.popRecord();
+							if (record == null) {
+								throw new IllegalStateException("a needed part could not be found!");
+							}
+							partPackage.add(Part.readFromCSV(record));
+						}
+					}
+				}
+				return partPackage;
+			} else {
+				return null;
+			}
+		} catch (Exception e) {
+			// if an error occurs, print it and return null
+			LOGGER.error("Error while trying to read parts for a PartPackage", e);
+			return null;
+		}
+	}
+
+	/**
+	 * Ueberprueft ob genug Teile fuer einen Threadee vorhanden sind
+	 * 
+	 * @return true wenn alle benoetigten Teile da sind
+	 */
+	public synchronized boolean hasPartPackage() {
+		try {
+			// loop through all parts and check if the correct amount is
+			// available
+			// if there is just 1 part missing, return false
+			for (PartType type : PartType.values()) {
+				FastCSV csvFile = this.partFileMap.get(type);
+				if (type.getAmountForThreadee() == 1) {
+					if (csvFile.hasRecord() == false) {
+						return false;
+					}
+				} else {
+					if (csvFile.hasRecords(type.getAmountForThreadee()) == false) {
+						return false;
+					}
+				}
+			}
+			return true;
+		} catch (Exception e) {
+			LOGGER.error("Error while trying to check if the PartPackage is available", e);
+			return false;
+		}
 	}
 
 	/**
@@ -116,7 +185,7 @@ public class Warehouser implements Closeable {
 	 *            Threadee der gelagert werden soll
 	 * @return gibt true zurueck, wenn der Threadee erfolgreich gelagert wurde
 	 */
-	public boolean storeThreadee(Threadee threadee) {
+	public synchronized boolean storeThreadee(Threadee threadee) {
 		try {
 			// serialize the assembled threadee into csv format and write it to
 			// disk
@@ -128,7 +197,7 @@ public class Warehouser implements Closeable {
 		}
 	}
 
-	public void close() {
+	public synchronized void close() {
 		for (Map.Entry<PartType, FastCSV> entry : this.partFileMap.entrySet()) {
 			try {
 				entry.getValue().close();

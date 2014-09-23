@@ -1,6 +1,7 @@
 package tgm.sew.hit.roboterfabrik.part;
 
 import java.util.Arrays;
+import java.util.List;
 
 import at.rene8888.fastcsv.FastCSVRecord;
 
@@ -64,6 +65,23 @@ public class Part {
 			record.addField(String.valueOf(i));
 		}
 		return record;
+	}
+
+	/**
+	 * Deserialisiert einen CSV Record zu einem Part
+	 * 
+	 * @param csvRecord
+	 *            CSV Record der deseialisiert werden soll
+	 * @return Deserialisierter Part
+	 */
+	public static Part readFromCSV(FastCSVRecord csvRecord) {
+		List<String> fields = csvRecord.getFields();
+		String name = fields.get(0);
+		int[] numbers = new int[fields.size() - 1];
+		for (int i = 1; i < fields.size(); i++) {
+			numbers[i - 1] = Integer.parseInt(fields.get(i));
+		}
+		return new Part(PartType.fromName(name), numbers);
 	}
 
 	@Override
