@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xml>
 <configuration status="OFF">
 	<appenders>
 		<console name="ConsoleLogger" target="SYSTEM_OUT">
@@ -13,7 +14,7 @@
 		</async>
 	</appenders>
 	<loggers>
-		<root level="debug">
+		<root level="${sys:logLevel}">
 			<appender-ref ref="ConsoleLogger" />
 			<appender-ref ref="FileLogger" />
 		</root>

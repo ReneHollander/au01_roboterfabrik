@@ -15,6 +15,7 @@ import org.apache.commons.cli.Option;
 import org.apache.commons.cli.OptionBuilder;
 import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
+import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.core.LoggerContext;
@@ -31,12 +32,13 @@ import tgm.sew.hit.roboterfabrik.watchdog.Watchdog;
  */
 public class Simulation implements Watchable {
 
+	private static final Level LOG_LEVEL = Level.INFO;
+	private static final Logger LOGGER = (Logger) LogManager.getLogger(Simulation.class);
+
 	static {
 		// set the logger to this path until the log path is set
-		configureLogger(new File("./startup.log"));
+		configureLogger(new File("./startup.log"), LOG_LEVEL);
 	}
-
-	private static final Logger LOGGER = LogManager.getLogger(Simulation.class);
 
 	private int duration;
 	private int employeeCount;
@@ -73,7 +75,7 @@ public class Simulation implements Watchable {
 		this.logFilePath = logFilePath;
 
 		// configure logger to ouput to the specified path
-		configureLogger(new File(this.logFilePath, "roboterfabrik " + LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH-mm-ss")) + ".log"));
+		configureLogger(new File(this.logFilePath, "roboterfabrik " + LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH-mm-ss")) + ".log"), LOG_LEVEL);
 	}
 
 	/**
@@ -326,10 +328,11 @@ public class Simulation implements Watchable {
 		options.addOption(o);
 	}
 
-	private static void configureLogger(File logFile) {
-		// set logFilename property used by log4j2.xml so you can specify it
-		// during runtime
+	private static void configureLogger(File logFile, Level logLevel) {
+		// set logFilename and logLevel property used by log4j2.xml so you can
+		// specify it during runtime
 		System.setProperty("logFilename", logFile.getAbsolutePath());
+		System.setProperty("logLevel", logLevel.toString().toLowerCase());
 		// get context from logger and reconfigure it
 		LoggerContext context = (LoggerContext) LogManager.getContext(false);
 		context.reconfigure();

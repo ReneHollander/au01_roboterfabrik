@@ -67,7 +67,9 @@ public class Supplier extends AbstractWatchable {
 			// erstelle part aus und uebergebe dieses dem lagermitarbeiter
 			Part part = new Part(currentPartType, numbers);
 			this.simulation.getWarehouser().storeSupply(new Supply(part));
-			LOGGER.debug("Delivered new " + part.toString());
+			if (LOGGER.isDebugEnabled()) {
+				LOGGER.debug("Delivered new " + part.toString());
+			}
 		}
 	}
 

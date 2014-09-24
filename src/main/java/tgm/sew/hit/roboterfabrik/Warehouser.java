@@ -197,7 +197,9 @@ public class Warehouser implements Closeable {
 			// serialize the assembled threadee into csv format and write it to
 			// disk
 			threadeeCsvFile.pushRecord(threadee.getCSVRecord());
-			LOGGER.debug("Successfully stored " + threadee.toString());
+			if (LOGGER.isDebugEnabled()) {
+				LOGGER.debug("Successfully stored " + threadee.toString());
+			}
 			return true;
 		} catch (IOException e) {
 			LOGGER.error("Error while trying to store assembled " + threadee.toString(), e);

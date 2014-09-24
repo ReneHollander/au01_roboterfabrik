@@ -42,7 +42,9 @@ public class Office {
 		workerId++;
 		long id = workerId;
 		lock.unlock();
-		LOGGER.debug("new worker-id assigned: " + id);
+		if (LOGGER.isDebugEnabled()) {
+			LOGGER.debug("new worker-id assigned: " + id);
+		}
 		return id;
 	}
 
@@ -56,7 +58,9 @@ public class Office {
 		threadeeId++;
 		long id = threadeeId;
 		lock.unlock();
-		LOGGER.debug("new threadeeId-id assigned: " + id);
+		if (LOGGER.isDebugEnabled()) {
+			LOGGER.debug("new threadeeId-id assigned: " + id);
+		}
 		return id;
 	}
 

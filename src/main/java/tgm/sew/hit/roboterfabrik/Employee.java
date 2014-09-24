@@ -37,7 +37,7 @@ public class Employee extends AbstractWatchable {
 		this.sim = sim;
 		this.id = id;
 	}
-	
+
 	public void run() {
 		Thread.currentThread().setName("Employee " + this.id);
 		while (this.isRunning()) {
@@ -47,7 +47,9 @@ public class Employee extends AbstractWatchable {
 					Arrays.sort(p.getNumbers());
 				}
 				Threadee r2d2 = new Threadee(this.sim.getOffice().generateThreadeeID(), this, partList);
-				LOGGER.debug("Successfully assembled " + r2d2.toString());
+				if (LOGGER.isDebugEnabled()) {
+					LOGGER.debug("Successfully assembled " + r2d2.toString());
+				}
 				this.sim.getWarehouser().storeThreadee(r2d2);
 			}
 		}
