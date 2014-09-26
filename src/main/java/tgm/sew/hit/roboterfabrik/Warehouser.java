@@ -62,7 +62,6 @@ public class Warehouser implements Closeable {
 			} catch (Exception e) {
 				// if an error occurs, log to console and terminate apps
 				LOGGER.fatal("Error while trying to create Lager file for " + partType.getName(), e);
-				System.exit(1);
 			}
 		}
 		try {
@@ -77,7 +76,6 @@ public class Warehouser implements Closeable {
 		} catch (Exception e) {
 			// if an error occurs, log to console and terminate apps
 			LOGGER.fatal("Error while trying to create Lager file for Threadees", e);
-			System.exit(1);
 		}
 	}
 
@@ -98,7 +96,7 @@ public class Warehouser implements Closeable {
 			// increment the counter for the corresponding part by 1
 			this.partCountMap.get(part.getPartType()).add(1);
 			return true;
-		} catch (IOException e) {
+		} catch (Exception e) {
 			LOGGER.error("Error while trying to store supply from supplier", e);
 			return false;
 		}

@@ -1,6 +1,6 @@
 package tgm.sew.hit.roboterfabrik;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import tgm.sew.hit.roboterfabrik.part.Part;
 import at.rene8888.fastcsv.FastCSVRecord;
@@ -17,7 +17,7 @@ public class Threadee {
 
 	private long id;
 	private Employee creator;
-	private ArrayList<Part> parts;
+	private List<Part> parts;
 
 	/**
 	 * Erstellt einen neuen Threadee
@@ -30,7 +30,7 @@ public class Threadee {
 	 *            ist eine ArrayList, die die ganzen Teile die fuer den Roboter
 	 *            benoetigt werden.
 	 */
-	public Threadee(long id, Employee creator, ArrayList<Part> parts) {
+	public Threadee(long id, Employee creator, List<Part> parts) {
 		this.id = id;
 		this.creator = creator;
 		this.parts = parts;
@@ -59,7 +59,7 @@ public class Threadee {
 	 * 
 	 * @return Teile des Threadees
 	 */
-	public ArrayList<Part> getParts() {
+	public List<Part> getParts() {
 		return parts;
 	}
 
