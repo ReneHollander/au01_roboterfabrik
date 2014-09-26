@@ -1,13 +1,11 @@
 package tgm.sew.hit.roboterfabrik.test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import java.util.Arrays;
-import java.util.EnumMap;
 
 import org.junit.Test;
 
-import at.rene8888.fastcsv.FastCSV;
 import tgm.sew.hit.roboterfabrik.part.Part;
 import tgm.sew.hit.roboterfabrik.part.PartType;
 
