@@ -9,7 +9,6 @@ import org.junit.Test;
 import tgm.sew.hit.roboterfabrik.part.Part;
 import tgm.sew.hit.roboterfabrik.part.PartType;
 
-//getCSVRecod und readFromCSV müssen noch getestet werden!
 public class PartTest {
 
 	@Test
@@ -179,5 +178,85 @@ public class PartTest {
 			ar2[i] = i + 1;
 		p.setNumbers(ar2);
 		assertEquals(ar2, p.getNumbers());
+	}
+
+	@Test
+	public void testGetCSVRecord1() {
+		PartType pt = PartType.EYE;
+		int[] ar = new int[3];
+		for (int i = 0; i < 3; i++)
+			ar[i] = i + 1;
+		Part p = new Part(pt, ar);
+		assertEquals("Auge,1,2,3", p.getCSVRecord().toString());
+	}
+
+	@Test
+	public void testGetCSVRecord2() {
+		PartType pt = PartType.BODY;
+		int[] ar = new int[3];
+		for (int i = 0; i < 3; i++)
+			ar[i] = i + 1;
+		Part p = new Part(pt, ar);
+		assertEquals("Rumpf,1,2,3", p.getCSVRecord().toString());
+	}
+
+	@Test
+	public void testGetCSVRecord3() {
+		PartType pt = PartType.ARM;
+		int[] ar = new int[3];
+		for (int i = 0; i < 3; i++)
+			ar[i] = i + 1;
+		Part p = new Part(pt, ar);
+		assertEquals("Arm,1,2,3", p.getCSVRecord().toString());
+	}
+
+	@Test
+	public void testGetCSVRecord4() {
+		PartType pt = PartType.CHAINDRIVE;
+		int[] ar = new int[3];
+		for (int i = 0; i < 3; i++)
+			ar[i] = i + 1;
+		Part p = new Part(pt, ar);
+		assertEquals("Kettenantrieb,1,2,3", p.getCSVRecord().toString());
+	}
+
+	@Test
+	public void testReadFRomCSVRecord1() {
+		PartType pt = PartType.CHAINDRIVE;
+		int[] ar = new int[3];
+		for (int i = 0; i < 3; i++)
+			ar[i] = i + 1;
+		Part p = new Part(pt, ar);
+		assertEquals("Part [type=CHAINDRIVE, numbers=[1, 2, 3]]", p.readFromCSV(p.getCSVRecord()).toString());
+	}
+
+	@Test
+	public void testReadFRomCSVRecord2() {
+		PartType pt = PartType.EYE;
+		int[] ar = new int[3];
+		for (int i = 0; i < 3; i++)
+			ar[i] = i + 1;
+		Part p = new Part(pt, ar);
+		assertEquals("Part [type=EYE, numbers=[1, 2, 3]]", p.readFromCSV(p.getCSVRecord()).toString());
+	}
+
+	@Test
+	public void testReadFRomCSVRecord3() {
+		PartType pt = PartType.ARM;
+		int[] ar = new int[3];
+		for (int i = 0; i < 3; i++)
+			ar[i] = i + 1;
+		Part p = new Part(pt, ar);
+		assertEquals("Part [type=ARM, numbers=[1, 2, 3]]", p.readFromCSV(p.getCSVRecord()).toString());
+	}
+
+	@Test
+	public void testReadFRomCSVRecord4() {
+		PartType pt = PartType.BODY;
+		int[] ar = new int[3];
+		for (int i = 0; i < 3; i++)
+			ar[i] = i + 1;
+		Part p = new Part(pt, ar);
+		assertEquals("Part [type=BODY, numbers=[1, 2, 3]]", p.readFromCSV(p.getCSVRecord()).toString());
 	}
 }

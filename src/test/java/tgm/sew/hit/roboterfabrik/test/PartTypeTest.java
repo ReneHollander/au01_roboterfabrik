@@ -6,7 +6,6 @@ import org.junit.Test;
 
 import tgm.sew.hit.roboterfabrik.part.PartType;
 
-//fromNAme muss noch getestet werden
 public class PartTypeTest {
 
 	@Test
@@ -79,5 +78,26 @@ public class PartTypeTest {
 	public void testGetAmountForThreadee4() {
 		PartType p = PartType.BODY;
 		assertEquals(1, p.getAmountForThreadee());
+	}
+	
+	@Test
+	public void testFromName1() {
+		PartType p = PartType.EYE;
+		assertEquals(PartType.EYE, p.fromName("Auge"));
+	}
+	@Test
+	public void testFromName2() {
+		PartType p = PartType.BODY;
+		assertEquals(PartType.BODY, p.fromName("Rumpf"));
+	}
+	@Test
+	public void testFromName3() {
+		PartType p = PartType.ARM;
+		assertEquals(PartType.ARM, p.fromName("Arm"));
+	}
+	@Test
+	public void testFromName4() {
+		PartType p = PartType.CHAINDRIVE;
+		assertEquals(PartType.CHAINDRIVE, p.fromName("Kettenantrieb"));
 	}
 }
