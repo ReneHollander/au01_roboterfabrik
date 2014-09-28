@@ -27,7 +27,7 @@ public class Threadee {
 	 * @param creator
 	 *            ist der Employee der den Threadee zusammengebaut hat.
 	 * @param parts
-	 *            ist eine ArrayList, die die ganzen Teile die fuer den Roboter
+	 *            ist eine ArrayList, die die ganzen Teile enthaellt die fuer den Roboter
 	 *            benoetigt werden.
 	 */
 	public Threadee(long id, Employee creator, List<Part> parts) {
