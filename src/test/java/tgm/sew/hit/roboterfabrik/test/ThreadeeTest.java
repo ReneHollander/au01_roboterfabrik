@@ -74,7 +74,7 @@ public class ThreadeeTest {
 		assertEquals(, t.getParts());
 	}**/
 	
-	@Test
+	/**@Test
 	public void testThreadeeCSV() {
 		this.testDir.mkdirs();
 		this.logDir.mkdirs();
@@ -85,5 +85,61 @@ public class ThreadeeTest {
 		Threadee t = new Threadee(1, e, null);
 		
 		assertEquals(1, t.getID());
+	}**/
+	
+	@Test
+	public void testThreadeeEquals() {
+		this.testDir.mkdirs();
+		this.logDir.mkdirs();
+
+		final Simulation sim = new Simulation(100, 1, 1, this.testDir, this.logDir);
+
+		Employee e = new Employee(sim, 1);
+		Threadee t = new Threadee(1, e, null);
+		
+		assertEquals(true, t.equals(t));
 	}
+	
+	@Test
+	public void testThreadeeEqualsNull() {
+		this.testDir.mkdirs();
+		this.logDir.mkdirs();
+
+		final Simulation sim = new Simulation(100, 1, 1, this.testDir, this.logDir);
+
+		Employee e = new Employee(sim, 1);
+		Threadee t = new Threadee(1, e, null);
+		
+		assertEquals(false, t.equals(null));
+	}
+	
+	@Test
+	public void testThreadeeCreatorEqualsNull() {
+		this.testDir.mkdirs();
+		this.logDir.mkdirs();
+
+		final Simulation sim = new Simulation(100, 1, 1, this.testDir, this.logDir);
+
+		Employee e = new Employee(sim, 1);
+		Employee e2 = new Employee(sim, 2);
+		Threadee t = new Threadee(1, null, null);
+		Threadee t2 = new Threadee(2, null, null);
+		
+		assertEquals(false, t.equals(t2));
+	}
+	
+	/**@Test
+	public void testThreadeePartsEqualNull() {
+		this.testDir.mkdirs();
+		this.logDir.mkdirs();
+
+		final Simulation sim = new Simulation(100, 1, 1, this.testDir, this.logDir);
+
+		Employee e = new Employee(sim, 1);
+		Employee e2 = new Employee(sim, 2);
+		Threadee t = new Threadee(1, null, null);
+		Threadee t2 = new Threadee(2, null, null);
+		
+		assertEquals(true, t.getParts().equals(t2.getParts()));
+	}**/
 }
