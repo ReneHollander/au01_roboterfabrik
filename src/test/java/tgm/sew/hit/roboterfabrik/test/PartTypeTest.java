@@ -79,22 +79,25 @@ public class PartTypeTest {
 		PartType p = PartType.BODY;
 		assertEquals(1, p.getAmountForThreadee());
 	}
-	
+
 	@Test
 	public void testFromName1() {
 		PartType p = PartType.EYE;
 		assertEquals(PartType.EYE, p.fromName("Auge"));
 	}
+
 	@Test
 	public void testFromName2() {
 		PartType p = PartType.BODY;
 		assertEquals(PartType.BODY, p.fromName("Rumpf"));
 	}
+
 	@Test
 	public void testFromName3() {
 		PartType p = PartType.ARM;
 		assertEquals(PartType.ARM, p.fromName("Arm"));
 	}
+
 	@Test
 	public void testFromName4() {
 		PartType p = PartType.CHAINDRIVE;
