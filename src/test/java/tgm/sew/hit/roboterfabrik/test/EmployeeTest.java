@@ -13,8 +13,8 @@ import tgm.sew.hit.roboterfabrik.supply.Supplier;
 
 public class EmployeeTest {
 
-	private final File testDir = new File("./workingdir/test");
-	private final File logDir = new File("./workingdir/log");
+	private final File testDir = new File("./test");
+	private final File logDir = new File("./test/log");
 
 	@Before
 	public void resetFiles() {

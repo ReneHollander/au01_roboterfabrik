@@ -23,7 +23,8 @@ import tgm.sew.hit.roboterfabrik.supply.Supply;
 
 public class TestWarehouser {
 
-	private final File testDir = new File("./workingdir/test");
+	private final File testDir = new File("./test");
+	private final File logDir = new File("./test/log");
 
 	@Before
 	public void resetFiles() {

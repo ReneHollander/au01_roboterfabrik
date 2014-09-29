@@ -151,54 +151,26 @@ public class Simulation implements Watchable {
 		return "Simulation [duration=" + duration + ", employeeCount=" + employeeCount + ", supplierCount=" + supplierCount + ", warehousePath=" + warehousePath + ", logFilePath=" + logFilePath + "]";
 	}
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + duration;
-		result = prime * result + employeeCount;
-		result = prime * result + ((logFilePath == null) ? 0 : logFilePath.hashCode());
-		result = prime * result + supplierCount;
-		result = prime * result + ((warehousePath == null) ? 0 : warehousePath.hashCode());
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Simulation other = (Simulation) obj;
-		if (duration != other.duration)
-			return false;
-		if (employeeCount != other.employeeCount)
-			return false;
-		if (logFilePath == null) {
-			if (other.logFilePath != null)
-				return false;
-		} else if (!logFilePath.equals(other.logFilePath))
-			return false;
-		if (supplierCount != other.supplierCount)
-			return false;
-		if (warehousePath == null) {
-			if (other.warehousePath != null)
-				return false;
-		} else if (!warehousePath.equals(other.warehousePath))
-			return false;
-		return true;
-	}
-
 	/**
-	 * Main Methode fuer die Roboterfabrik <br>
-	 * Kommandozeilenargumente:
+	 * Main Methode fuer die Roboterfabrik
 	 * 
 	 * @param args
 	 *            Kommandozeilenargumente
 	 */
 	public static void main(String[] args) {
+		// parse cli args and start simulation
+		Simulation sim = parseCLI(args);
+		sim.start();
+	}
+
+	/**
+	 * Parst die Argumente und gibt eine Simulation zurueck
+	 * 
+	 * @param args
+	 *            Argumente um Simulation zu erstellen
+	 * @return Simulation aus Argumenten
+	 */
+	public static Simulation parseCLI(String[] args) {
 		// parse command line arguments using apache commns cli
 
 		// format the options as a help page
@@ -285,7 +257,7 @@ public class Simulation implements Watchable {
 			// if an error occurs log to console and exit applications
 			try {
 				Simulation sim = new Simulation(laufzeitOptionValue, monteureOptionValue, lieferantenOptionValue, lagerDir, loggingDir);
-				sim.start();
+				return sim;
 			} catch (Exception e) {
 				LOGGER.fatal("A fatal error occured while executing simulation", e);
 				System.exit(1);
@@ -298,7 +270,9 @@ public class Simulation implements Watchable {
 			System.exit(1);
 		} catch (Exception e) {
 			LOGGER.throwing(e);
+			System.exit(1);
 		}
+		return null;
 	}
 
 	private static void printHelpAndExit(HelpFormatter helpFormatter, Options options, int exitValue) {

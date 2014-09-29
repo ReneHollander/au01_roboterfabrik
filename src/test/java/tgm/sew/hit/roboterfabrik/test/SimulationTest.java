@@ -12,8 +12,8 @@ import tgm.sew.hit.roboterfabrik.part.PartType;
 //toString Methode hat was
 public class SimulationTest {
 
-	private final File testDir = new File("./workingdir/test");
-	private final File logDir = new File("./workingdir/log");
+	private final File testDir = new File("./test");
+	private final File logDir = new File("./test/log");
 
 	@Test
 	public void testGetWarehouser() {
@@ -46,7 +46,7 @@ public class SimulationTest {
 
 		final Simulation sim = new Simulation(100, 1, 1, this.testDir, this.logDir);
 		System.out.println("!!!!!" + sim.toString());
-		assertEquals("Simulation [duration=100, employeeCount=1, supplierCount=1, warehousePath=./workingdir/test, logFilePath=./workingdir/log]", sim.toString());
+		assertEquals("Simulation [duration=100, employeeCount=1, supplierCount=1, warehousePath=./test, logFilePath=./test/log]", sim.toString());
 	}
 
 	@Test
@@ -144,7 +144,7 @@ public class SimulationTest {
 	@Test
 	public void testEquals8() {
 
-		final File testDir2 = new File("./workingdir/test2");
+		final File testDir2 = new File("./test2");
 
 		this.testDir.mkdirs();
 		this.logDir.mkdirs();
@@ -158,7 +158,7 @@ public class SimulationTest {
 	@Test
 	public void testEquals9() {
 
-		final File logDir2 = new File("./workingdir/log2");
+		final File logDir2 = new File("./test2/log");
 
 		this.testDir.mkdirs();
 		this.logDir.mkdirs();
