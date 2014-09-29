@@ -47,17 +47,6 @@ public class EmployeeTest {
 	}
 
 	@Test
-	public void testRunEmployee() {
-		this.testDir.mkdirs();
-		this.logDir.mkdirs();
-
-		final Simulation sim = new Simulation(100, 1, 1, this.testDir, this.logDir);
-
-		Employee e = new Employee(sim, 1);
-		e.run();
-	}
-
-	@Test
 	public void testEmployeeGetID() {
 		this.testDir.mkdirs();
 		this.logDir.mkdirs();

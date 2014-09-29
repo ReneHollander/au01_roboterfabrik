@@ -160,7 +160,11 @@ public class Simulation implements Watchable {
 	public static void main(String[] args) {
 		// parse cli args and start simulation
 		Simulation sim = parseCLI(args);
-		sim.start();
+		if (sim == null) {
+			System.exit(1);
+		} else {
+			sim.start();
+		}
 	}
 
 	/**
@@ -170,7 +174,7 @@ public class Simulation implements Watchable {
 	 *            Argumente um Simulation zu erstellen
 	 * @return Simulation aus Argumenten
 	 */
-	public static Simulation parseCLI(String[] args) {
+	public static Simulation parseCLI(String... args) {
 		// parse command line arguments using apache commns cli
 
 		// format the options as a help page
@@ -199,10 +203,10 @@ public class Simulation implements Watchable {
 			// check if cmd has help parameter. if true print help page and exit
 			CommandLine cmd = cliParser.parse(helpOptions, args);
 			if (cmd.hasOption("help")) {
-				printHelpAndExit(helpFormatter, options, 0);
+				printHelp(helpFormatter, options);
+				return null;
 			}
 		} catch (Exception e) {
-
 		}
 
 		try {
@@ -211,7 +215,8 @@ public class Simulation implements Watchable {
 			// the exeption and the help page
 			CommandLine cmd = cliParser.parse(options, args);
 			if (cmd.hasOption("help")) {
-				printHelpAndExit(helpFormatter, options, 0);
+				printHelp(helpFormatter, options);
+				return null;
 			}
 
 			// read all values from the cli and parse them
@@ -227,7 +232,8 @@ public class Simulation implements Watchable {
 			lagerDir.mkdirs();
 			if (!lagerDir.isDirectory()) {
 				LOGGER.error("the lager directory must not be a file");
-				printHelpAndExit(helpFormatter, options, 1);
+				printHelp(helpFormatter, options);
+				return null;
 			}
 
 			// check if loggingDir is not a file and create all direcotries
@@ -236,49 +242,50 @@ public class Simulation implements Watchable {
 			loggingDir.mkdirs();
 			if (!loggingDir.isDirectory()) {
 				LOGGER.error("the log directory must not be a file");
-				printHelpAndExit(helpFormatter, options, 1);
+				printHelp(helpFormatter, options);
+				return null;
 			}
 
 			// check if more then 1 suppliers are given
 			// if less log to console and stop application
 			if ((lieferantenOptionValue >= 1) == false) {
 				LOGGER.error("you have to specify more or equal to 1 suppliers");
-				printHelpAndExit(helpFormatter, options, 1);
+				printHelp(helpFormatter, options);
+				return null;
 			}
 
 			// check if more then 1 mechanics are given
 			// if less log to console and stop application
 			if ((monteureOptionValue >= 1) == false) {
 				LOGGER.error("you have to specify more or equal to 1 mechanics");
-				printHelpAndExit(helpFormatter, options, 1);
+				printHelp(helpFormatter, options);
+				return null;
 			}
 
-			// create a new simulation and start it
-			// if an error occurs log to console and exit applications
-			try {
-				Simulation sim = new Simulation(laufzeitOptionValue, monteureOptionValue, lieferantenOptionValue, lagerDir, loggingDir);
-				return sim;
-			} catch (Exception e) {
-				LOGGER.fatal("A fatal error occured while executing simulation", e);
-				System.exit(1);
+			// check if the runtime is bigger then 0
+			if ((laufzeitOptionValue >= 1) == false) {
+				LOGGER.error("you have to specify a longer runtime");
+				printHelp(helpFormatter, options);
+				return null;
 			}
+
+			Simulation sim = new Simulation(laufzeitOptionValue, monteureOptionValue, lieferantenOptionValue, lagerDir, loggingDir);
+			return sim;
 
 		} catch (ParseException e) {
 			// print error message and help dialog on failure
 			LOGGER.error(e.getMessage());
-			helpFormatter.printHelp("java - jar roboterfabrik.jar", "Verfuegbare Parameter:", options, null, true);
-			System.exit(1);
+			printHelp(helpFormatter, options);
+			return null;
 		} catch (Exception e) {
 			LOGGER.throwing(e);
-			System.exit(1);
+			return null;
 		}
-		return null;
 	}
 
-	private static void printHelpAndExit(HelpFormatter helpFormatter, Options options, int exitValue) {
+	private static void printHelp(HelpFormatter helpFormatter, Options options) {
 		// print help dialog to console and exit app with given error code
 		helpFormatter.printHelp("java - jar roboterfabrik.jar", "Verfuegbare Parameter:", options, null, true);
-		System.exit(exitValue);
 	}
 
 	private static void addOption(Options options, String opt, String desc, Class<?> type, boolean required, boolean hasArg) {

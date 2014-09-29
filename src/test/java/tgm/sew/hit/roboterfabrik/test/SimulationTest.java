@@ -3,6 +3,7 @@ package tgm.sew.hit.roboterfabrik.test;
 import static org.junit.Assert.*;
 
 import java.io.File;
+import java.io.IOException;
 
 import org.junit.Test;
 
@@ -40,132 +41,53 @@ public class SimulationTest {
 
 	@Test
 	public void testToString() {
-
 		this.testDir.mkdirs();
 		this.logDir.mkdirs();
 
 		final Simulation sim = new Simulation(100, 1, 1, this.testDir, this.logDir);
-		System.out.println("!!!!!" + sim.toString());
-		assertEquals("Simulation [duration=100, employeeCount=1, supplierCount=1, warehousePath=./test, logFilePath=./test/log]", sim.toString());
+		assertEquals("Simulation [duration=100, employeeCount=1, supplierCount=1, warehousePath=" + this.testDir.toString() + ", logFilePath=" + this.logDir.toString() + "]", sim.toString());
 	}
 
 	@Test
-	public void testHashCode() {
-
+	public void testParseCLI1() {
 		this.testDir.mkdirs();
 		this.logDir.mkdirs();
 
-		final Simulation sim = new Simulation(100, 1, 1, this.testDir, this.logDir);
-
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + 100;
-		result = prime * result + 1;
-		result = prime * result + ((logDir == null) ? 0 : logDir.hashCode());
-		result = prime * result + 1;
-		result = prime * result + ((testDir == null) ? 0 : testDir.hashCode());
-		assertEquals(result, sim.hashCode());
+		Simulation sim = Simulation.parseCLI("help");
+		assertEquals(null, sim);
 	}
 
 	@Test
-	public void testEquals1() {
-
-		this.testDir.mkdirs();
-		this.logDir.mkdirs();
-
-		final Simulation sim = new Simulation(100, 1, 1, this.testDir, this.logDir);
-		assertEquals(true, sim.equals(sim));
+	public void testParseCLI2() {
+		Simulation sim = Simulation.parseCLI("--lager", this.testDir.toString(), "--laufzeit", "100", "--lieferanten", "1", "--logs", this.logDir.toString(), "--monteure", "1");
+		assertEquals("Simulation [duration=100, employeeCount=1, supplierCount=1, warehousePath=" + this.testDir.toString() + ", logFilePath=" + this.logDir.toString() + "]", sim.toString());
 	}
 
 	@Test
-	public void testEquals2() {
-
+	public void testParseCLI3() {
 		this.testDir.mkdirs();
 		this.logDir.mkdirs();
 
-		final Simulation sim = new Simulation(100, 1, 1, this.testDir, this.logDir);
-		assertEquals(false, sim.equals("test"));
+		Simulation sim = Simulation.parseCLI("--lager", this.testDir.toString(), "--laufzeit", "0", "--lieferanten", "1", "--logs", this.logDir.toString(), "--monteure", "1");
+		assertEquals(null, sim);
 	}
 
 	@Test
-	public void testEquals3() {
-
+	public void testParseCLI4() {
 		this.testDir.mkdirs();
 		this.logDir.mkdirs();
-		PartType p = PartType.EYE;
 
-		final Simulation sim = new Simulation(100, 1, 1, this.testDir, this.logDir);
-		assertEquals(false, sim.equals(p));
+		Simulation sim = Simulation.parseCLI("--lager", this.testDir.toString(), "--laufzeit", "1", "--lieferanten", "0", "--logs", this.logDir.toString(), "--monteure", "1");
+		assertEquals(null, sim);
 	}
 
 	@Test
-	public void testEquals4() {
-
+	public void testParseCLI5() {
 		this.testDir.mkdirs();
 		this.logDir.mkdirs();
 
-		final Simulation sim = new Simulation(100, 1, 1, this.testDir, this.logDir);
-		assertEquals(false, sim.equals(Simulation.class));
+		Simulation sim = Simulation.parseCLI("--lager", this.testDir.toString(), "--laufzeit", "1", "--lieferanten", "1", "--logs", this.logDir.toString(), "--monteure", "0");
+		assertEquals(null, sim);
 	}
 
-	@Test
-	public void testEquals5() {
-
-		this.testDir.mkdirs();
-		this.logDir.mkdirs();
-
-		final Simulation sim = new Simulation(100, 1, 1, this.testDir, this.logDir);
-		final Simulation sim2 = new Simulation(50, 1, 1, this.testDir, this.logDir);
-		assertEquals(false, sim.equals(sim2));
-	}
-
-	@Test
-	public void testEquals6() {
-
-		this.testDir.mkdirs();
-		this.logDir.mkdirs();
-
-		final Simulation sim = new Simulation(100, 1, 1, this.testDir, this.logDir);
-		final Simulation sim2 = new Simulation(50, 2, 1, this.testDir, this.logDir);
-		assertEquals(false, sim.equals(sim2));
-	}
-
-	@Test
-	public void testEquals7() {
-
-		this.testDir.mkdirs();
-		this.logDir.mkdirs();
-
-		final Simulation sim = new Simulation(100, 1, 1, this.testDir, this.logDir);
-		final Simulation sim2 = new Simulation(50, 1, 2, this.testDir, this.logDir);
-		assertEquals(false, sim.equals(sim2));
-	}
-
-	@Test
-	public void testEquals8() {
-
-		final File testDir2 = new File("./test2");
-
-		this.testDir.mkdirs();
-		this.logDir.mkdirs();
-		testDir2.mkdirs();
-
-		final Simulation sim = new Simulation(100, 1, 1, this.testDir, this.logDir);
-		final Simulation sim2 = new Simulation(50, 1, 2, testDir2, this.logDir);
-		assertEquals(false, sim.equals(sim2));
-	}
-
-	@Test
-	public void testEquals9() {
-
-		final File logDir2 = new File("./test2/log");
-
-		this.testDir.mkdirs();
-		this.logDir.mkdirs();
-		logDir2.mkdirs();
-
-		final Simulation sim = new Simulation(100, 1, 1, this.testDir, this.logDir);
-		final Simulation sim2 = new Simulation(50, 1, 2, this.testDir, logDir2);
-		assertEquals(false, sim.equals(sim2));
-	}
 }

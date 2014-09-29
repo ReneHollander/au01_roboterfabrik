@@ -49,22 +49,6 @@ public class SupplierTest {
 	}
 
 	@Test
-	public void testSupplierRun() {
-		this.testDir.mkdirs();
-		this.logDir.mkdirs();
-		int[] ar = new int[3];
-		for (int i = 0; i < 3; i++)
-			ar[i] = i + 1;
-
-		final Simulation sim = new Simulation(100, 1, 1, this.testDir, this.logDir);
-		final Part p = new Part(PartType.EYE, ar);
-		final Supply sup = new Supply(p);
-
-		Supplier s = new Supplier(sim, 1);
-		s.run();
-	}
-
-	@Test
 	public void testSupplierToString() {
 		this.testDir.mkdirs();
 		this.logDir.mkdirs();
