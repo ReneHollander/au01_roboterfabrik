@@ -10,9 +10,9 @@ import tgm.sew.hit.roboterfabrik.part.Part;
 import tgm.sew.hit.roboterfabrik.part.PartType;
 
 /**
- * @author Simon Wortha
+ * Testfälle für Part
  * 
- *         Testfälle für Part
+ * @author Simon Wortha
  */
 public class PartTest {
 
@@ -309,7 +309,7 @@ public class PartTest {
 		for (int i = 0; i < 3; i++)
 			ar[i] = i + 1;
 		Part p = new Part(pt, ar);
-		assertEquals("Part [type=CHAINDRIVE, numbers=[1, 2, 3]]", p.readFromCSV(p.getCSVRecord()).toString());
+		assertEquals("Part [type=CHAINDRIVE, numbers=[1, 2, 3]]", Part.readFromCSV(p.getCSVRecord()).toString());
 	}
 
 	/**
@@ -322,7 +322,7 @@ public class PartTest {
 		for (int i = 0; i < 3; i++)
 			ar[i] = i + 1;
 		Part p = new Part(pt, ar);
-		assertEquals("Part [type=EYE, numbers=[1, 2, 3]]", p.readFromCSV(p.getCSVRecord()).toString());
+		assertEquals("Part [type=EYE, numbers=[1, 2, 3]]", Part.readFromCSV(p.getCSVRecord()).toString());
 	}
 
 	/**
@@ -335,7 +335,7 @@ public class PartTest {
 		for (int i = 0; i < 3; i++)
 			ar[i] = i + 1;
 		Part p = new Part(pt, ar);
-		assertEquals("Part [type=ARM, numbers=[1, 2, 3]]", p.readFromCSV(p.getCSVRecord()).toString());
+		assertEquals("Part [type=ARM, numbers=[1, 2, 3]]", Part.readFromCSV(p.getCSVRecord()).toString());
 	}
 
 	/**
@@ -348,6 +348,6 @@ public class PartTest {
 		for (int i = 0; i < 3; i++)
 			ar[i] = i + 1;
 		Part p = new Part(pt, ar);
-		assertEquals("Part [type=BODY, numbers=[1, 2, 3]]", p.readFromCSV(p.getCSVRecord()).toString());
+		assertEquals("Part [type=BODY, numbers=[1, 2, 3]]", Part.readFromCSV(p.getCSVRecord()).toString());
 	}
 }

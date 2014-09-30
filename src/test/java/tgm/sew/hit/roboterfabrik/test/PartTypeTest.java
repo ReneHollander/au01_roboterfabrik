@@ -7,10 +7,9 @@ import org.junit.Test;
 import tgm.sew.hit.roboterfabrik.part.PartType;
 
 /**
- * @author Simon Wortha
+ * Testfälle für PartType
  * 
- *         Testfälle für PartType
- *
+ * @author Simon Wortha
  */
 public class PartTypeTest {
 
@@ -141,7 +140,7 @@ public class PartTypeTest {
 	@Test
 	public void testFromName1() {
 		PartType p = PartType.EYE;
-		assertEquals(PartType.EYE, p.fromName("Auge"));
+		assertEquals(PartType.EYE, PartType.fromName("Auge"));
 	}
 
 	/**
@@ -151,7 +150,7 @@ public class PartTypeTest {
 	@Test
 	public void testFromName2() {
 		PartType p = PartType.BODY;
-		assertEquals(PartType.BODY, p.fromName("Rumpf"));
+		assertEquals(PartType.BODY, PartType.fromName("Rumpf"));
 	}
 
 	/**
@@ -161,7 +160,7 @@ public class PartTypeTest {
 	@Test
 	public void testFromName3() {
 		PartType p = PartType.ARM;
-		assertEquals(PartType.ARM, p.fromName("Arm"));
+		assertEquals(PartType.ARM, PartType.fromName("Arm"));
 	}
 
 	/**
@@ -171,6 +170,6 @@ public class PartTypeTest {
 	@Test
 	public void testFromName4() {
 		PartType p = PartType.CHAINDRIVE;
-		assertEquals(PartType.CHAINDRIVE, p.fromName("Kettenantrieb"));
+		assertEquals(PartType.CHAINDRIVE, PartType.fromName("Kettenantrieb"));
 	}
 }
