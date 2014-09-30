@@ -8,8 +8,17 @@ import tgm.sew.hit.roboterfabrik.part.Part;
 import tgm.sew.hit.roboterfabrik.part.PartType;
 import tgm.sew.hit.roboterfabrik.supply.Supply;
 
+/**
+ * Testfälle zu Supply
+ * 
+ * @author Simon Wortha
+ *
+ */
 public class SupplyTest {
 
+	/**
+	 * Testet ob getPart auch den richtigen Roboterteil zurück liefert
+	 */
 	@Test
 	public void testGetPart() {
 		int[] ar = new int[3];
@@ -20,6 +29,9 @@ public class SupplyTest {
 		assertEquals(p, s.getPart());
 	}
 
+	/**
+	 * Testet ob toString auch den gewünschten String zurück liefert
+	 */
 	@Test
 	public void testToString() {
 		int[] ar = new int[3];
@@ -30,6 +42,9 @@ public class SupplyTest {
 		assertEquals("Supply [part=Part [type=EYE, numbers=[1, 2, 3]]]", s.toString());
 	}
 
+	/**
+	 * Testet ob hashCode auch die gewünschten Werte berechnet
+	 */
 	@Test
 	public void testHashCode() {
 		int[] ar = new int[3];
@@ -41,6 +56,9 @@ public class SupplyTest {
 		assertEquals(result, s.hashCode());
 	}
 
+	/**
+	 * Testet ob equals auch richtig vergleicht
+	 */
 	@Test
 	public void testEquals1() {
 		int[] ar = new int[3];
@@ -51,6 +69,9 @@ public class SupplyTest {
 		assertEquals(true, s.equals(s));
 	}
 
+	/**
+	 * Testet ob equals auch richtig vergleicht
+	 */
 	@Test
 	public void testEquals2() {
 		int[] ar = new int[3];
@@ -61,6 +82,9 @@ public class SupplyTest {
 		assertEquals(false, s.equals("Hallo"));
 	}
 
+	/**
+	 * Testet ob equals auch richtig vergleicht
+	 */
 	@Test
 	public void testEquals3() {
 		int[] ar = new int[3];
@@ -72,6 +96,9 @@ public class SupplyTest {
 		assertEquals(true, s.equals(s2));
 	}
 
+	/**
+	 * Testet ob equals auch richtig vergleicht
+	 */
 	@Test
 	public void testEquals4() {
 		int[] ar = new int[3];

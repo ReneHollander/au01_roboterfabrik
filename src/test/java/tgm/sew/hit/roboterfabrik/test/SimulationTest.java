@@ -9,6 +9,12 @@ import org.junit.Test;
 
 import tgm.sew.hit.roboterfabrik.Simulation;
 
+/**
+ * Testfälle für Simulation
+ * 
+ * @author Simon Wortha & Rene Hollander
+ *
+ */
 public class SimulationTest {
 
 	private final File testDir = new File("./test");
@@ -24,6 +30,10 @@ public class SimulationTest {
 		this.logDir.delete();
 	}
 
+	/**
+	 * Testet ob getWarehouser auch einen Warehouser zurück liefert mit dem
+	 * weiter gearbeitet werden kann
+	 */
 	@Test
 	public void testGetWarehouser() {
 		this.testDir.mkdirs();
@@ -34,6 +44,10 @@ public class SimulationTest {
 		assertEquals(false, sim.getWarehouser().hasPartPackage());
 	}
 
+	/**
+	 * Test ob getOffice auch ein Office zurück liefert mit dem weiter
+	 * gearbeitet werden kann
+	 */
 	@Test
 	public void testGetOffice() {
 		this.testDir.mkdirs();
@@ -44,6 +58,10 @@ public class SimulationTest {
 		assertEquals("class tgm.sew.hit.roboterfabrik.Office", sim.getOffice().getClass().toString());
 	}
 
+	/**
+	 * Testet ob die toString Methode richtig arbeitet, und den gewünschten
+	 * String zurück liefert
+	 */
 	@Test
 	public void testToString() {
 		this.testDir.mkdirs();
