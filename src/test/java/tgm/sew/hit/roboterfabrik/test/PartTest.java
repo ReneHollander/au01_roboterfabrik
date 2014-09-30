@@ -9,8 +9,16 @@ import org.junit.Test;
 import tgm.sew.hit.roboterfabrik.part.Part;
 import tgm.sew.hit.roboterfabrik.part.PartType;
 
+/**
+ * @author Simon Wortha
+ * 
+ *         Testfälle für Part
+ */
 public class PartTest {
 
+	/**
+	 * Testet ob die getNumbers Methode bzw. der Konstruktor richtig arbeitet
+	 */
 	@Test
 	public void testgetNumbers() {
 		PartType pt = PartType.EYE;
@@ -21,6 +29,9 @@ public class PartTest {
 		assertEquals(ar, p.getNumbers());
 	}
 
+	/**
+	 * Testet ob die getPartType Methode bzw. der Konstruktor richtig arbeitet
+	 */
 	@Test
 	public void testgetPartType() {
 		PartType pt = PartType.EYE;
@@ -31,6 +42,10 @@ public class PartTest {
 		assertEquals(pt, p.getPartType());
 	}
 
+	/**
+	 * Testet ob die getPartType Methode richtig arbeitet, genau genommen ob das
+	 * Object und kein String ausgegeben wird
+	 */
 	@Test(expected = java.lang.AssertionError.class)
 	public void testgetPartType2() {
 		PartType pt = PartType.EYE;
@@ -41,6 +56,10 @@ public class PartTest {
 		assertEquals("EYE", p.getPartType());
 	}
 
+	/**
+	 * Testet ob die getPartType Methode richtig arbeitet, genau genommen ob das
+	 * Object und kein String ausgegeben wird
+	 */
 	@Test(expected = java.lang.AssertionError.class)
 	public void testgetPartType3() {
 		PartType pt = PartType.BODY;
@@ -51,6 +70,10 @@ public class PartTest {
 		assertEquals("BODY", p.getPartType());
 	}
 
+	/**
+	 * Testet ob die getPartType Methode richtig arbeitet, genau genommen ob das
+	 * Object und kein String ausgegeben wird
+	 */
 	@Test(expected = java.lang.AssertionError.class)
 	public void testgetPartType4() {
 		PartType pt = PartType.CHAINDRIVE;
@@ -61,6 +84,10 @@ public class PartTest {
 		assertEquals("CHAINDRIVE", p.getPartType());
 	}
 
+	/**
+	 * Testet ob die getPartType Methode tichtig arbeitet, genau genommen ob das
+	 * Object und kein String ausgegeben wird
+	 */
 	@Test(expected = java.lang.AssertionError.class)
 	public void testgetPartType5() {
 		PartType pt = PartType.ARM;
@@ -71,6 +98,10 @@ public class PartTest {
 		assertEquals("ARM", p.getPartType());
 	}
 
+	/**
+	 * Testet ob die getPartType Methode richtig arbeitet, genau genommen ob das
+	 * richtige Object returned wird
+	 */
 	@Test
 	public void testgetPartType6() {
 		PartType pt = PartType.ARM;
@@ -81,6 +112,10 @@ public class PartTest {
 		assertEquals(PartType.ARM, p.getPartType());
 	}
 
+	/**
+	 * Testet ob die getPartType Methode richtig arbeitet, genau genommen ob das
+	 * richtige Object returned wird
+	 */
 	@Test
 	public void testgetPartType7() {
 		PartType pt = PartType.CHAINDRIVE;
@@ -91,6 +126,10 @@ public class PartTest {
 		assertEquals(PartType.CHAINDRIVE, p.getPartType());
 	}
 
+	/**
+	 * Testet ob die getPartType Methode richtig arbeitet, genau genommen ob das
+	 * richtige Object returned wird
+	 */
 	@Test
 	public void testgetPartType8() {
 		PartType pt = PartType.EYE;
@@ -101,6 +140,10 @@ public class PartTest {
 		assertEquals(PartType.EYE, p.getPartType());
 	}
 
+	/**
+	 * Testet ob die getPartType Methode richig arbeitet, genau genommen ob das
+	 * richtige Object returned wird
+	 */
 	@Test
 	public void testgetPartType9() {
 		PartType pt = PartType.BODY;
@@ -111,6 +154,10 @@ public class PartTest {
 		assertEquals(PartType.BODY, p.getPartType());
 	}
 
+	/**
+	 * Testet ob die Equals Methode richtig arbeitet, genau genommen ob sie zwei
+	 * Objects richtig miteinander vergleicht
+	 */
 	@Test
 	public void testEquals() {
 		PartType pt = PartType.EYE;
@@ -121,6 +168,10 @@ public class PartTest {
 		assertEquals(true, p.equals(p));
 	}
 
+	/**
+	 * Testet ob die Equals Methode richtig arbeitet, genau genommen ob sie zwei
+	 * Objects richtig miteinander vergleicht
+	 */
 	@Test
 	public void testEquals2() {
 		PartType pt = PartType.EYE;
@@ -132,6 +183,10 @@ public class PartTest {
 		assertEquals(true, p.equals(p2));
 	}
 
+	/**
+	 * Testet ob die Equals Methode richtig arbeitet, genau genommen ob sie zwei
+	 * Objects richtig miteinander vergleicht
+	 */
 	@Test
 	public void testEquals3() {
 		PartType pt = PartType.EYE;
@@ -144,6 +199,10 @@ public class PartTest {
 		assertEquals(false, p.equals(p2));
 	}
 
+	/**
+	 * Testet ob die toString Methode richtig arbeitet, genau genommen ob sie
+	 * auch den richtigen String zurück gibt
+	 */
 	@Test
 	public void testToString() {
 		PartType pt = PartType.EYE;
@@ -154,6 +213,10 @@ public class PartTest {
 		assertEquals("Part [type=EYE, numbers=[1, 2, 3]]", p.toString());
 	}
 
+	/**
+	 * Testet ob die hashCode Methode richtig arbeitet, genau genommen ob sie
+	 * die Berechnung richtig macht
+	 */
 	@Test
 	public void testHashCode() {
 		PartType pt = PartType.EYE;
@@ -166,6 +229,10 @@ public class PartTest {
 		assertEquals(hc, p.hashCode());
 	}
 
+	/**
+	 * Testet ob die Equals Methode richtig arbeitet, genau genommen ob sie auch
+	 * wirklich die Neuen Nummern zurück gibt
+	 */
 	@Test
 	public void testSetNumbers() {
 		PartType pt = PartType.EYE;
@@ -180,6 +247,9 @@ public class PartTest {
 		assertEquals(ar2, p.getNumbers());
 	}
 
+	/**
+	 * Testet die CSVRecords
+	 */
 	@Test
 	public void testGetCSVRecord1() {
 		PartType pt = PartType.EYE;
@@ -190,6 +260,9 @@ public class PartTest {
 		assertEquals("Auge,1,2,3", p.getCSVRecord().toString());
 	}
 
+	/**
+	 * Testet die CSVRecords
+	 */
 	@Test
 	public void testGetCSVRecord2() {
 		PartType pt = PartType.BODY;
@@ -200,6 +273,9 @@ public class PartTest {
 		assertEquals("Rumpf,1,2,3", p.getCSVRecord().toString());
 	}
 
+	/**
+	 * Testet die CSVRecords
+	 */
 	@Test
 	public void testGetCSVRecord3() {
 		PartType pt = PartType.ARM;
@@ -210,6 +286,9 @@ public class PartTest {
 		assertEquals("Arm,1,2,3", p.getCSVRecord().toString());
 	}
 
+	/**
+	 * Testet die CSVRecords
+	 */
 	@Test
 	public void testGetCSVRecord4() {
 		PartType pt = PartType.CHAINDRIVE;
@@ -220,6 +299,9 @@ public class PartTest {
 		assertEquals("Kettenantrieb,1,2,3", p.getCSVRecord().toString());
 	}
 
+	/**
+	 * Testet die CSVRecords
+	 */
 	@Test
 	public void testReadFRomCSVRecord1() {
 		PartType pt = PartType.CHAINDRIVE;
@@ -230,6 +312,9 @@ public class PartTest {
 		assertEquals("Part [type=CHAINDRIVE, numbers=[1, 2, 3]]", p.readFromCSV(p.getCSVRecord()).toString());
 	}
 
+	/**
+	 * Testet die CSVRecords
+	 */
 	@Test
 	public void testReadFRomCSVRecord2() {
 		PartType pt = PartType.EYE;
@@ -240,6 +325,9 @@ public class PartTest {
 		assertEquals("Part [type=EYE, numbers=[1, 2, 3]]", p.readFromCSV(p.getCSVRecord()).toString());
 	}
 
+	/**
+	 * Testet die CSVRecords
+	 */
 	@Test
 	public void testReadFRomCSVRecord3() {
 		PartType pt = PartType.ARM;
@@ -250,6 +338,9 @@ public class PartTest {
 		assertEquals("Part [type=ARM, numbers=[1, 2, 3]]", p.readFromCSV(p.getCSVRecord()).toString());
 	}
 
+	/**
+	 * Testet die CSVRecords
+	 */
 	@Test
 	public void testReadFRomCSVRecord4() {
 		PartType pt = PartType.BODY;
