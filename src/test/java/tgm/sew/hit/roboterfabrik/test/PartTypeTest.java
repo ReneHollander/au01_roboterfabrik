@@ -139,7 +139,6 @@ public class PartTypeTest {
 	 */
 	@Test
 	public void testFromName1() {
-		PartType p = PartType.EYE;
 		assertEquals(PartType.EYE, PartType.fromName("Auge"));
 	}
 
@@ -149,7 +148,6 @@ public class PartTypeTest {
 	 */
 	@Test
 	public void testFromName2() {
-		PartType p = PartType.BODY;
 		assertEquals(PartType.BODY, PartType.fromName("Rumpf"));
 	}
 
@@ -159,7 +157,6 @@ public class PartTypeTest {
 	 */
 	@Test
 	public void testFromName3() {
-		PartType p = PartType.ARM;
 		assertEquals(PartType.ARM, PartType.fromName("Arm"));
 	}
 
@@ -169,7 +166,6 @@ public class PartTypeTest {
 	 */
 	@Test
 	public void testFromName4() {
-		PartType p = PartType.CHAINDRIVE;
 		assertEquals(PartType.CHAINDRIVE, PartType.fromName("Kettenantrieb"));
 	}
 }
