@@ -6,8 +6,16 @@ import org.junit.Test;
 
 import tgm.sew.hit.roboterfabrik.IntegerWrapper;
 
+/**
+ * Testet die Integer Wrapper Klasse
+ * 
+ * @author Rene Hollander
+ */
 public class TestIntegerWrapper {
 
+	/**
+	 * Testet ob der Integer Wrapper die richtige Anzahl hinzufuegt
+	 */
 	@Test
 	public void testIntegerWrapper() {
 		IntegerWrapper iw = new IntegerWrapper(0);

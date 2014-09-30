@@ -7,9 +7,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -21,16 +19,27 @@ import tgm.sew.hit.roboterfabrik.part.Part;
 import tgm.sew.hit.roboterfabrik.part.PartType;
 import tgm.sew.hit.roboterfabrik.supply.Supply;
 
+/**
+ * Testet den Lagermitarbeiter
+ * 
+ * @author Rene Hollander
+ */
 public class TestWarehouser {
 
 	private final File testDir = new File("./test");
-	private final File logDir = new File("./test/log");
 
+	/**
+	 * Bevor der nächste Test ausgeführt wird sollten die Test Ordner
+	 * zurueckgesetzt werden
+	 */
 	@Before
 	public void resetFiles() {
 		this.testDir.delete();
 	}
 
+	/**
+	 * Testet ob ein Warehouser erstellt und wieder geschlossen werden kann
+	 */
 	@Test
 	public void testCreateWarehouser() {
 		this.testDir.mkdirs();
@@ -38,6 +47,9 @@ public class TestWarehouser {
 		w.close();
 	}
 
+	/**
+	 * Testet ob ein Warehouser mit schon vorhandenen Files zurecht kommt
+	 */
 	@Test
 	public void testCreateWarehouserIfExisted() {
 		this.testDir.mkdirs();
@@ -47,36 +59,49 @@ public class TestWarehouser {
 		w2.close();
 	}
 
+	/**
+	 * Testet ob ein Warehouser mit einer nicht existenten Directory zurecht
+	 * kommt (kann schwer getestet werden, weil die Exception geloggt wird)
+	 */
 	@Test
 	public void testCreateWarehouserException() {
 		this.testDir.mkdirs();
+		@SuppressWarnings({ "unused", "resource" })
 		Warehouser w = new Warehouser(new File(this.testDir, "nonExistentDir"));
 	}
 
-	@Test
-	public void testStoreSupply() {
-		this.testDir.mkdirs();
-		Warehouser w = new Warehouser(this.testDir);
-		assertEquals(true, w.storeSupply(new Supply(new Part(PartType.ARM, new int[0]))));
-		w.close();
-	}
-
+	/**
+	 * Testet ob der Lagermitarbeiter eine Supply richtig abspeichert
+	 * 
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 */
 	@Test
 	public void testStoreSupplyAndCheckFile() throws FileNotFoundException, IOException {
 		this.testDir.mkdirs();
 		Warehouser w = new Warehouser(this.testDir);
 		w.storeSupply(new Supply(new Part(PartType.ARM, new int[] { 1, 2 })));
 		w.close();
-		assertEquals("Arm,1,2", new BufferedReader(new FileReader(new File(this.testDir, "arm.csv"))).readLine());
+		BufferedReader br = new BufferedReader(new FileReader(new File(this.testDir, "arm.csv")));
+		assertEquals("Arm,1,2", br.readLine());
+		br.close();
 	}
 
+	/**
+	 * Testet ob der Lagermitarbeiter ein null Package zurueckgibt wenn keine
+	 * Teile vorhanden sind
+	 */
 	@Test
 	public void testGetPartPackage1() {
 		this.testDir.mkdirs();
 		Warehouser w = new Warehouser(this.testDir);
 		assertEquals(null, w.getPartPackage());
+		w.close();
 	}
 
+	/**
+	 * Testet ob man ein PartPackage bekommt, wenn alle Teile vorhanden sind
+	 */
 	@Test
 	public void testGetPartPackage2() {
 		this.testDir.mkdirs();
@@ -91,12 +116,20 @@ public class TestWarehouser {
 		w.close();
 	}
 
+	/**
+	 * Testet ob der Lagermitarbeiter einen Threadee richtig speichert
+	 * 
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 */
 	@Test
 	public void testStoreThreadee() throws FileNotFoundException, IOException {
 		this.testDir.mkdirs();
 		Warehouser w = new Warehouser(this.testDir);
 		w.storeThreadee(new Threadee(0, new Employee(null, 0), Arrays.asList(new Part(PartType.CHAINDRIVE, new int[] { 0 }))));
 		w.close();
-		assertEquals("Threadee-ID0,Mitarbeiter-ID0,Kettenantrieb,0", new BufferedReader(new FileReader(new File(this.testDir, "auslieferung.csv"))).readLine());
+		BufferedReader br = new BufferedReader(new FileReader(new File(this.testDir, "auslieferung.csv")));
+		assertEquals("Threadee-ID0,Mitarbeiter-ID0,Kettenantrieb,0", br.readLine());
+		br.close();
 	}
 }
