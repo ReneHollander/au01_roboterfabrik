@@ -1,3 +1,22 @@
+commit e4fec02ee10293d5da7463fb078b0cdab41f6f66
+Author: ReneHollander <rene.hollander@hotmail.de>
+Date:   Wed Oct 1 20:39:49 2014 +0200
+
+    fixed some last second things
+
+ pom.xml                                                 | 8 ++++++++
+ src/main/java/tgm/sew/hit/roboterfabrik/Simulation.java | 2 +-
+ 2 files changed, 9 insertions(+), 1 deletion(-)
+
+commit d8867f1d27f43206ea89211c9cc75011fb0aaa7a
+Author: ReneHollander <rene.hollander@hotmail.de>
+Date:   Wed Oct 1 20:33:07 2014 +0200
+
+    added last version of the repo log
+
+ files/protokoll/repo.log | 18 ++++++++++++++++++
+ 1 file changed, 18 insertions(+)
+
 commit c816cd8cb455b16260a186e0ab22572daf407651
 Author: ReneHollander <rene.hollander@hotmail.de>
 Date:   Wed Oct 1 20:31:57 2014 +0200
