@@ -1,0 +1,869 @@
+commit 2a7b773237188808c2b128b449ee342f9512281f
+Author: ReneHollander <rene.hollander@hotmail.de>
+Date:   Wed Oct 1 20:30:04 2014 +0200
+
+    final doku changes
+
+ files/protokoll/Dokumentation.docx | Bin 716122 -> 718442 bytes
+ files/protokoll/Dokumentation.pdf  | Bin 0 -> 749080 bytes
+ pom.xml                            |   4 +++-
+ 3 files changed, 3 insertions(+), 1 deletion(-)
+
+commit 511965f661770fb49344db1c9ce42f409b0592e5
+Author: Samuel Schober <sschober@student.tgm.ac.at>
+Date:   Wed Oct 1 20:11:53 2014 +0200
+
+    Added my Part to Doku
+
+ files/protokoll/Dokumentation.docx | Bin 715816 -> 716122 bytes
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit fe70b2c5a52c9ed701b065cf6ecb537ff89c4bb5
+Author: Samuel Schober <sschober@student.tgm.ac.at>
+Date:   Wed Oct 1 18:28:16 2014 +0200
+
+    Added Comments to the Test Cases
+
+ .../sew/hit/roboterfabrik/test/SupplierTest.java   | 43 +++++++++++++++++++---
+ 1 file changed, 37 insertions(+), 6 deletions(-)
+
+commit c9e4a112d0619f7b33e47c2dff6b3b2ddec7d7ea
+Author: Samuel Schober <sschober@student.tgm.ac.at>
+Date:   Wed Oct 1 18:08:01 2014 +0200
+
+    Added docummentation to Test Cases
+
+ .../sew/hit/roboterfabrik/test/ThreadeeTest.java   | 68 ++++++++++++++++------
+ 1 file changed, 51 insertions(+), 17 deletions(-)
+
+commit b8b20434580077796a5a74f0a7be3b7a5eeb89a7
+Author: Samuel Schober <sschober@student.tgm.ac.at>
+Date:   Wed Oct 1 17:33:01 2014 +0200
+
+    Fixed all Umlaut Errors
+
+ .../java/tgm/sew/hit/roboterfabrik/test/EmployeeTest.java    |  2 +-
+ src/test/java/tgm/sew/hit/roboterfabrik/test/OfficeTest.java |  6 +++---
+ src/test/java/tgm/sew/hit/roboterfabrik/test/PartTest.java   |  6 +++---
+ .../java/tgm/sew/hit/roboterfabrik/test/SimulationTest.java  | 12 ++++++------
+ src/test/java/tgm/sew/hit/roboterfabrik/test/SupplyTest.java |  8 ++++----
+ .../java/tgm/sew/hit/roboterfabrik/test/TestWarehouser.java  |  2 +-
+ 6 files changed, 18 insertions(+), 18 deletions(-)
+
+commit b7eeb8d1c92783ea920197f4ad558c4a32dd06c5
+Author: Samuel Schober <sschober@student.tgm.ac.at>
+Date:   Wed Oct 1 17:27:44 2014 +0200
+
+    Fixed Umlauts and the comments overall.
+
+ .../tgm/sew/hit/roboterfabrik/test/PartTypeTest.java   | 18 +++++++++---------
+ 1 file changed, 9 insertions(+), 9 deletions(-)
+
+commit 35f7563ac8d5237ce84125f78d1829d38893270d
+Author: ReneHollander <rene.hollander@hotmail.de>
+Date:   Wed Oct 1 17:04:11 2014 +0200
+
+    more test cases, javadoc and updated docs
+
+ files/protokoll/Dokumentation.docx                 | Bin 658148 -> 715816 bytes
+ .../java/tgm/sew/hit/roboterfabrik/Threadee.java   |   4 +-
+ .../java/tgm/sew/hit/roboterfabrik/Warehouser.java |   5 +-
+ .../tgm/sew/hit/roboterfabrik/part/PartType.java   |   2 +-
+ .../tgm/sew/hit/roboterfabrik/supply/Supplier.java |  14 +++-
+ .../sew/hit/roboterfabrik/test/EmployeeTest.java   |  76 +++++++++++++++++----
+ .../tgm/sew/hit/roboterfabrik/test/OfficeTest.java |   2 +-
+ .../tgm/sew/hit/roboterfabrik/test/PartTest.java   |  49 +++++++++++++
+ .../sew/hit/roboterfabrik/test/SupplierTest.java   |  46 +++++++++++--
+ .../tgm/sew/hit/roboterfabrik/test/SupplyTest.java |  55 ++++++++++++++-
+ .../hit/roboterfabrik/test/TestIntegerWrapper.java |   2 +-
+ .../sew/hit/roboterfabrik/test/TestWarehouser.java |  30 ++++++++
+ .../sew/hit/roboterfabrik/test/ThreadeeTest.java   |  55 ++++-----------
+ .../sew/hit/roboterfabrik/test/WatchdogTest.java   |  61 +++++++++++++++--
+ 14 files changed, 323 insertions(+), 78 deletions(-)
+
+commit e2cac126b07ae39e2e71767eb05c8a3880bb682b
+Author: Samuel Schober <sschober@student.tgm.ac.at>
+Date:   Wed Oct 1 11:20:59 2014 +0200
+
+    Added Test Cases to WatchdogTest
+
+ .../sew/hit/roboterfabrik/test/WatchdogTest.java   | 26 ++++++++++++++++++++--
+ 1 file changed, 24 insertions(+), 2 deletions(-)
+
+commit 6c9ded93c5179d9e4edf5ff0aecfb509467c7a41
+Author: tgm-simon <swortha@student.tgm.ac.at>
+Date:   Tue Sep 30 21:00:32 2014 +0200
+
+    added missing Javadoc to Supply and Simulation
+
+ files/protokoll/Dokumentation.docx                 | Bin 714737 -> 658148 bytes
+ .../sew/hit/roboterfabrik/test/SimulationTest.java |  18 ++++++++++++++
+ .../tgm/sew/hit/roboterfabrik/test/SupplyTest.java |  27 +++++++++++++++++++++
+ 3 files changed, 45 insertions(+)
+
+commit 88b5d592e485e1800c038e2ae5846529fcf97b90
+Author: ReneHollander <rene.hollander@hotmail.de>
+Date:   Tue Sep 30 19:48:15 2014 +0200
+
+    updated doku
+
+ files/protokoll/Dokumentation.docx | Bin 724127 -> 714737 bytes
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit acd114025dc90fed5fb2e805f69a37485d35c293
+Author: ReneHollander <rene.hollander@hotmail.de>
+Date:   Tue Sep 30 19:42:03 2014 +0200
+
+    forget some stuff
+
+ src/test/java/tgm/sew/hit/roboterfabrik/test/PartTypeTest.java | 4 ----
+ 1 file changed, 4 deletions(-)
+
+commit ea1e9c14bfca71f8cd8940d65318ce15e4391a0d
+Author: ReneHollander <rene.hollander@hotmail.de>
+Date:   Tue Sep 30 19:41:34 2014 +0200
+
+    removed files from build path
+
+ .classpath | 5 -----
+ 1 file changed, 5 deletions(-)
+
+commit 17d8b3e5c7dae599fe1e7757449b9ad9275753f4
+Author: ReneHollander <rene.hollander@hotmail.de>
+Date:   Tue Sep 30 19:40:50 2014 +0200
+
+    fixed some wierd stuff with simon :)
+
+ config/Build Roboterfabrik.launch                  | 39 +++++++++++-----------
+ .../tgm/sew/hit/roboterfabrik/test/PartTest.java   | 12 +++----
+ .../sew/hit/roboterfabrik/test/PartTypeTest.java   | 13 ++++----
+ 3 files changed, 31 insertions(+), 33 deletions(-)
+
+commit 97a585a2c5e7a3f48d65b8cc8a9c4635a71c960f
+Author: ReneHollander <rene.hollander@hotmail.de>
+Date:   Tue Sep 30 19:35:15 2014 +0200
+
+    added missing test javadoc
+    fixed some warnings in the test classes
+
+ .../tgm/sew/hit/roboterfabrik/test/OfficeTest.java | 14 +++++
+ .../sew/hit/roboterfabrik/test/SimulationTest.java | 36 ++++++++++---
+ .../hit/roboterfabrik/test/TestIntegerWrapper.java |  8 +++
+ .../sew/hit/roboterfabrik/test/TestWarehouser.java | 59 +++++++++++++++++-----
+ 4 files changed, 96 insertions(+), 21 deletions(-)
+
+commit abdd5d8c01f713ea9c477dc4111273df4a18a0af
+Author: Rene8888 <rene.hollander@hotmail.de>
+Date:   Tue Sep 30 19:09:26 2014 +0200
+
+    doku upgedated
+
+ files/protokoll/Dokumentation.docx | Bin 655739 -> 724127 bytes
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 67ae7ac388b4435a5da77188e07b3806459741ff
+Author: tgm-simon <swortha@student.tgm.ac.at>
+Date:   Tue Sep 30 18:43:19 2014 +0200
+
+    added Javadoc to PartTest and PartTypeTest and updated Doku
+
+ files/protokoll/Dokumentation.docx                 | Bin 655602 -> 655739 bytes
+ .../tgm/sew/hit/roboterfabrik/test/PartTest.java   |  91 +++++++++++++++++++++
+ .../sew/hit/roboterfabrik/test/PartTypeTest.java   |  70 ++++++++++++++++
+ 3 files changed, 161 insertions(+)
+
+commit 6383ce5fae8bf2be50c43de1de202f17307fc74e
+Author: tgm-simon <swortha@student.tgm.ac.at>
+Date:   Tue Sep 30 16:25:44 2014 +0200
+
+    updated Doku
+
+ files/protokoll/Dokumentation.docx | Bin 186947 -> 655602 bytes
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit c43b09b132f5cd4d883c34227a5dc16da8d6b2e5
+Author: Rene8888 <rene.hollander@hotmail.de>
+Date:   Mon Sep 29 21:22:57 2014 +0200
+
+    added some more test cases
+
+ .../java/tgm/sew/hit/roboterfabrik/Simulation.java |  53 +++++-----
+ .../sew/hit/roboterfabrik/test/EmployeeTest.java   |  11 --
+ .../sew/hit/roboterfabrik/test/SimulationTest.java | 112 ++++-----------------
+ .../sew/hit/roboterfabrik/test/SupplierTest.java   |  16 ---
+ 4 files changed, 47 insertions(+), 145 deletions(-)
+
+commit 0163b5576b7f264e95e2f2fa0a85caddbc7d2001
+Author: tgm-simon <swortha@student.tgm.ac.at>
+Date:   Mon Sep 29 14:46:58 2014 +0200
+
+    updated Doku
+
+ files/protokoll/Dokumentation.docx | Bin 223388 -> 186947 bytes
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit e3fdf48428e8817816945fa397786eb84906e314
+Author: tgm-simon <swortha@student.tgm.ac.at>
+Date:   Mon Sep 29 14:42:49 2014 +0200
+
+    added testcases to ThreadeeTest
+
+ .../sew/hit/roboterfabrik/test/ThreadeeTest.java   | 260 ++++++++++++++++++---
+ 1 file changed, 222 insertions(+), 38 deletions(-)
+
+commit 7a5840f501ce3791c15d77e2446fb8dd6eb62c76
+Author: ReneHollander <rene.hollander@hotmail.de>
+Date:   Mon Sep 29 13:27:29 2014 +0200
+
+    moved cli parsing to seperate method
+    removed better warehouser
+    fixed test working dir
+    added test roboterfabrik launch config
+
+ config/Run Roboterfabrik (Long Time Run).launch    |  36 ++--
+ config/Run Roboterfabrik.launch                    |  36 ++--
+ config/Test Roboterfabrik.launch                   |  21 +++
+ .../sew/hit/roboterfabrik/BetterWarehouser.java    | 205 ---------------------
+ .../java/tgm/sew/hit/roboterfabrik/Simulation.java |  60 ++----
+ .../sew/hit/roboterfabrik/test/EmployeeTest.java   |   4 +-
+ .../sew/hit/roboterfabrik/test/SimulationTest.java |  10 +-
+ .../sew/hit/roboterfabrik/test/SupplierTest.java   |   4 +-
+ .../sew/hit/roboterfabrik/test/TestWarehouser.java |   3 +-
+ .../sew/hit/roboterfabrik/test/ThreadeeTest.java   |   4 +-
+ 10 files changed, 87 insertions(+), 296 deletions(-)
+
+commit 3324239af05535d386b790bde13da17df55966c5
+Author: Simon <swortha@student.tgm.ac.at>
+Date:   Sun Sep 28 23:05:01 2014 +0200
+
+    added SimulationTest, updated Doku
+
+ files/protokoll/Dokumentation.docx                 | Bin 223320 -> 223388 bytes
+ .../sew/hit/roboterfabrik/test/SimulationTest.java | 171 +++++++++++++++++++++
+ 2 files changed, 171 insertions(+)
+
+commit e992d8041dd2522bd4c3a99ee2c1f96edeaded88
+Author: Samuel Schober <sschober@student.tgm.ac.at>
+Date:   Sun Sep 28 16:39:25 2014 +0200
+
+    Added WatchdogTest Class
+
+ .../java/tgm/sew/hit/roboterfabrik/test/WatchdogTest.java  | 14 ++++++++++++++
+ 1 file changed, 14 insertions(+)
+
+commit 4ecda5c4818fd0e0222b67e83cc539edd101b343
+Author: Samuel Schober <sschober@student.tgm.ac.at>
+Date:   Sun Sep 28 16:37:38 2014 +0200
+
+    Added Test Cases to ThreadeeTest
+
+ .../sew/hit/roboterfabrik/test/ThreadeeTest.java   | 58 +++++++++++++++++++++-
+ 1 file changed, 57 insertions(+), 1 deletion(-)
+
+commit 200efe79b199e500a4a297273a89a1d155079a6f
+Author: Samuel Schober <sschober@student.tgm.ac.at>
+Date:   Sun Sep 28 13:06:36 2014 +0200
+
+    Added Test Cases for Supplier, Employee and Threadee
+    Differed comment at Threadee
+
+ .../java/tgm/sew/hit/roboterfabrik/Threadee.java   |   2 +-
+ .../sew/hit/roboterfabrik/test/EmployeeTest.java   | 117 ++++++++++++++++++-
+ .../sew/hit/roboterfabrik/test/SupplierTest.java   | 124 ++++++++++++++++++++-
+ .../sew/hit/roboterfabrik/test/ThreadeeTest.java   |  80 ++++++++++++-
+ 4 files changed, 316 insertions(+), 7 deletions(-)
+
+commit db80735c7f67f980ba3f27d07e054619bea6db79
+Author: Samuel Schober <sschober@student.tgm.ac.at>
+Date:   Sun Sep 28 11:28:01 2014 +0200
+
+    Added Employee Test Class
+
+ .../java/tgm/sew/hit/roboterfabrik/test/EmployeeTest.java  | 14 ++++++++++++++
+ 1 file changed, 14 insertions(+)
+
+commit df7424c7c6f7a8244336066f9512ca0a6d6421e8
+Author: tgm-simon <swortha@student.tgm.ac.at>
+Date:   Sun Sep 28 10:55:15 2014 +0200
+
+    added SupplierTest, SupplyTest and ThreadeeTest
+
+ .../sew/hit/roboterfabrik/test/PartTypeTest.java   |  5 +-
+ .../sew/hit/roboterfabrik/test/SupplierTest.java   | 14 ++++
+ .../tgm/sew/hit/roboterfabrik/test/SupplyTest.java | 85 ++++++++++++++++++++++
+ .../sew/hit/roboterfabrik/test/ThreadeeTest.java   | 13 ++++
+ 4 files changed, 116 insertions(+), 1 deletion(-)
+
+commit 15fd2fa408a471c3462edd0956092884ce03af38
+Author: tgm-simon <swortha@student.tgm.ac.at>
+Date:   Sun Sep 28 10:27:52 2014 +0200
+
+    added TestCases in PartTest and PartTypeTest
+
+ .../tgm/sew/hit/roboterfabrik/test/PartTest.java   | 83 +++++++++++++++++++++-
+ .../sew/hit/roboterfabrik/test/PartTypeTest.java   | 22 +++++-
+ 2 files changed, 102 insertions(+), 3 deletions(-)
+
+commit 4089da35a1c9febe8d2d4e0968a1166980b4e078
+Author: Simon <swortha@student.tgm.ac.at>
+Date:   Sat Sep 27 20:30:19 2014 +0200
+
+    updated Doku
+
+ files/protokoll/Dokumentation.docx | Bin 222489 -> 223320 bytes
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 818f2974bc4f2f2a898fd3c87c9f15e3f5d0d428
+Author: Rene8888 <rene.hollander@hotmail.de>
+Date:   Fri Sep 26 22:52:02 2014 +0200
+
+    updated documentation
+
+ files/protokoll/Dokumentation.docx | Bin 223125 -> 222489 bytes
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 972ae016e48233cff25b32f0edbac1b68a7928c0
+Author: Rene8888 <rene.hollander@hotmail.de>
+Date:   Fri Sep 26 22:49:43 2014 +0200
+
+    added testcases for office, integerwrapper and warehouser
+    fixed some possible bugs
+
+ .classpath                                         |  70 +++++++-------
+ pom.xml                                            |   2 +-
+ .../java/tgm/sew/hit/roboterfabrik/Threadee.java   |   8 +-
+ .../java/tgm/sew/hit/roboterfabrik/Warehouser.java |   4 +-
+ .../tgm/sew/hit/roboterfabrik/test/OfficeTest.java |  28 ++++++
+ .../hit/roboterfabrik/test/TestIntegerWrapper.java |  17 ++++
+ .../sew/hit/roboterfabrik/test/TestWarehouser.java | 101 +++++++++++++++++++++
+ 7 files changed, 189 insertions(+), 41 deletions(-)
+
+commit 479af99a4727e12ce787cf4068c3368fb5f75b3e
+Author: tgm-simon <swortha@student.tgm.ac.at>
+Date:   Fri Sep 26 22:09:29 2014 +0200
+
+    auto format
+
+ src/test/java/tgm/sew/hit/roboterfabrik/test/PartTest.java     | 4 +---
+ src/test/java/tgm/sew/hit/roboterfabrik/test/PartTypeTest.java | 2 +-
+ 2 files changed, 2 insertions(+), 4 deletions(-)
+
+commit bca7cacb01eca18d275da4e1821b71252dd04945
+Author: tgm-simon <swortha@student.tgm.ac.at>
+Date:   Fri Sep 26 22:03:23 2014 +0200
+
+    updated testcase in PartTest and did auto format
+
+ .../tgm/sew/hit/roboterfabrik/test/PartTest.java   | 77 +++++++++++++++-------
+ .../sew/hit/roboterfabrik/test/PartTypeTest.java   | 12 ++++
+ 2 files changed, 66 insertions(+), 23 deletions(-)
+
+commit b3d32ce1463347530dd1b21407534c887996655b
+Author: tgm-simon <swortha@student.tgm.ac.at>
+Date:   Fri Sep 26 21:48:10 2014 +0200
+
+    added testcases in PartTest and PartTypeTest
+
+ .../tgm/sew/hit/roboterfabrik/test/PartTest.java   | 135 ++++++++++++++++++++-
+ .../sew/hit/roboterfabrik/test/PartTypeTest.java   |  65 +++++++++-
+ 2 files changed, 193 insertions(+), 7 deletions(-)
+
+commit 39678c382e54de882fec9c16e19e854b755dc1a2
+Author: tgm-simon <swortha@student.tgm.ac.at>
+Date:   Thu Sep 25 20:53:36 2014 +0200
+
+    added PartTest and PartTypeTest
+
+ .classpath                                         | 70 ++++++++++------------
+ config/Build Roboterfabrik.launch                  | 40 ++++++-------
+ pom.xml                                            |  6 ++
+ src/test/java/empty                                |  0
+ .../tgm/sew/hit/roboterfabrik/test/PartTest.java   | 25 ++++++++
+ .../sew/hit/roboterfabrik/test/PartTypeTest.java   | 14 +++++
+ 6 files changed, 98 insertions(+), 57 deletions(-)
+
+commit 1ccd21cd29a664242d875a80ab16cda6eed6b8c5
+Author: Rene8888 <rene.hollander@hotmail.de>
+Date:   Wed Sep 24 21:54:59 2014 +0200
+
+    you can now change the log level in code (maybe cli arg?)
+    if debug is disabled, no more complex tostring calls
+
+ src/main/java/tgm/sew/hit/roboterfabrik/Employee.java   |  6 ++++--
+ src/main/java/tgm/sew/hit/roboterfabrik/Office.java     |  8 ++++++--
+ src/main/java/tgm/sew/hit/roboterfabrik/Simulation.java | 17 ++++++++++-------
+ src/main/java/tgm/sew/hit/roboterfabrik/Warehouser.java |  4 +++-
+ .../java/tgm/sew/hit/roboterfabrik/supply/Supplier.java |  4 +++-
+ src/main/resources/log4j2.xml                           |  3 ++-
+ 6 files changed, 28 insertions(+), 14 deletions(-)
+
+commit 2f6a5989f314587a919384d96de18e6254da3ab9
+Author: Rene8888 <rene.hollander@hotmail.de>
+Date:   Tue Sep 23 20:37:14 2014 +0200
+
+    fixing bad javadoc
+
+ src/main/java/tgm/sew/hit/roboterfabrik/part/Part.java       | 9 +++++++--
+ src/main/java/tgm/sew/hit/roboterfabrik/supply/Supplier.java | 3 +--
+ src/main/java/tgm/sew/hit/roboterfabrik/supply/Supply.java   | 6 ++++--
+ 3 files changed, 12 insertions(+), 6 deletions(-)
+
+commit ce9d6a5b4b3947a85803230db5bc1545b2ddba1f
+Author: Rene8888 <rene.hollander@hotmail.de>
+Date:   Tue Sep 23 20:29:04 2014 +0200
+
+    added missing comments
+
+ src/main/java/tgm/sew/hit/roboterfabrik/Warehouser.java | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+commit ce1f47c414b52ae2e6270011dc73646aff7c5271
+Merge: 552fc9b 4fdc58c
+Author: Rene8888 <rene.hollander@hotmail.de>
+Date:   Tue Sep 23 20:25:32 2014 +0200
+
+    Merge branch 'master' of https://github.com/ReneHollander/au01_roboterfabrik.git
+
+commit 552fc9b79ad194962cba59a6b12580858341351e
+Author: Rene8888 <rene.hollander@hotmail.de>
+Date:   Tue Sep 23 20:25:25 2014 +0200
+
+    made some performace improvements
+
+ config/Run Roboterfabrik (Long Time Run).launch    | 18 ++++++++++
+ .../tgm/sew/hit/roboterfabrik/IntegerWrapper.java  | 40 ++++++++++++++++++++++
+ .../java/tgm/sew/hit/roboterfabrik/Warehouser.java | 28 ++++++++-------
+ 3 files changed, 74 insertions(+), 12 deletions(-)
+
+commit 4fdc58caeb3dadf0cc96f7023858d2e3d44b410a
+Author: tgm-simon <swortha@student.tgm.ac.at>
+Date:   Tue Sep 23 20:23:03 2014 +0200
+
+    updated UMLv2
+
+ files/protokoll/UMLv2.asta                          | Bin 47683 -> 47907 bytes
+ files/protokoll/UMLv2.jpg                           | Bin 392059 -> 0 bytes
+ .../java/tgm/sew/hit/roboterfabrik/Employee.java    |   2 +-
+ 3 files changed, 1 insertion(+), 1 deletion(-)
+
+commit 7eb192b8c0597d7632af2c7c8b3a143bbde2359b
+Author: tgm-simon <swortha@student.tgm.ac.at>
+Date:   Tue Sep 23 15:49:49 2014 +0200
+
+    added v2 of uml
+
+ files/protokoll/UMLv2.asta | Bin 0 -> 47683 bytes
+ files/protokoll/UMLv2.jpg  | Bin 0 -> 392059 bytes
+ 2 files changed, 0 insertions(+), 0 deletions(-)
+
+commit f89cad6684a6ef43c7c76a6484f4afcde83af59c
+Author: Rene8888 <rene.hollander@hotmail.de>
+Date:   Tue Sep 23 15:08:24 2014 +0200
+
+    dont know
+
+ .../java/tgm/sew/hit/roboterfabrik/Warehouser.java | 26 +++++++++++++---------
+ 1 file changed, 15 insertions(+), 11 deletions(-)
+
+commit 12ac382cb4e17664f5abdcaac9e6472ae287f672
+Merge: 855373f 57f0393
+Author: Rene8888 <rene.hollander@hotmail.de>
+Date:   Tue Sep 23 14:33:24 2014 +0200
+
+    Merge branch 'master' of
+    https://github.com/ReneHollander/au01_roboterfabrik.git
+
+commit 855373fa5b1b27b7ba6e9bb82870b2364924027d
+Author: Rene8888 <rene.hollander@hotmail.de>
+Date:   Tue Sep 23 14:33:15 2014 +0200
+
+    IT IS ALIVE!
+    fixed some possible issues
+    fixed some broken chars
+
+ config/Run Roboterfabrik.launch                    |  36 ++--
+ .../sew/hit/roboterfabrik/BetterWarehouser.java    | 205 +++++++++++++++++++++
+ .../java/tgm/sew/hit/roboterfabrik/Employee.java   |  24 +--
+ .../java/tgm/sew/hit/roboterfabrik/Office.java     |  32 +++-
+ .../java/tgm/sew/hit/roboterfabrik/Simulation.java |  42 ++++-
+ .../java/tgm/sew/hit/roboterfabrik/Threadee.java   |   8 +-
+ .../java/tgm/sew/hit/roboterfabrik/Warehouser.java |  10 +-
+ .../tgm/sew/hit/roboterfabrik/supply/Supplier.java |  37 +++-
+ .../roboterfabrik/watchdog/AbstractWatchable.java  |   2 +-
+ .../sew/hit/roboterfabrik/watchdog/Watchable.java  |   2 +-
+ 10 files changed, 343 insertions(+), 55 deletions(-)
+
+commit 57f03934008c5bfe557c35919eeecfc775448e0f
+Author: Simon <swortha@student.tgm.ac.at>
+Date:   Tue Sep 23 13:42:52 2014 +0200
+
+    updated doku
+
+ files/protokoll/Dokumentation.docx | Bin 218009 -> 223125 bytes
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit c5b047b74fc5831339d4c76c46802836c89b8577
+Author: tgm-simon <swortha@student.tgm.ac.at>
+Date:   Tue Sep 23 13:14:24 2014 +0200
+
+    implemented employee
+
+ src/main/java/tgm/sew/hit/roboterfabrik/Employee.java | 19 ++++++++++++++++---
+ .../java/tgm/sew/hit/roboterfabrik/Simulation.java    | 11 +++++++++++
+ 2 files changed, 27 insertions(+), 3 deletions(-)
+
+commit fbe69f417ca311120b541dc5702ef7a2f4d01617
+Author: tgm-simon <swortha@student.tgm.ac.at>
+Date:   Tue Sep 23 12:35:27 2014 +0200
+
+    added Javadoc
+
+ .../java/tgm/sew/hit/roboterfabrik/Employee.java   | 27 +++++++++++++++++++---
+ 1 file changed, 24 insertions(+), 3 deletions(-)
+
+commit ecf2ab86847715c582686c8162ce6bcc59f1214d
+Author: tgm-simon <swortha@student.tgm.ac.at>
+Date:   Tue Sep 23 12:11:18 2014 +0200
+
+    Test Push
+
+ config/Run Roboterfabrik.launch                    | 36 +++++++++++-----------
+ .../java/tgm/sew/hit/roboterfabrik/Employee.java   |  2 +-
+ 2 files changed, 19 insertions(+), 19 deletions(-)
+
+commit bb0038160fb5a1f7ebb0ae0d186446c2a43d25da
+Author: Rene8888 <rene.hollander@hotmail.de>
+Date:   Tue Sep 23 11:19:29 2014 +0200
+
+    updated documentation
+    fixed javadoc error
+
+ files/protokoll/Dokumentation.docx                 | Bin 222138 -> 218009 bytes
+ .../java/tgm/sew/hit/roboterfabrik/Warehouser.java |   2 --
+ 2 files changed, 2 deletions(-)
+
+commit 059a78ee3212123335da834d12c1aedfb4080303
+Author: Rene8888 <rene.hollander@hotmail.de>
+Date:   Tue Sep 23 11:10:25 2014 +0200
+
+    parts are now getting read from a file
+
+ pom.xml                                            |  2 +-
+ .../java/tgm/sew/hit/roboterfabrik/Warehouser.java | 79 ++++++++++++++++++++--
+ .../java/tgm/sew/hit/roboterfabrik/part/Part.java  | 18 +++++
+ .../tgm/sew/hit/roboterfabrik/part/PartType.java   | 45 ++++++++++--
+ 4 files changed, 133 insertions(+), 11 deletions(-)
+
+commit 0d533954651632e0d8f6c3ec46b61c8386073f68
+Author: Rene8888 <rene.hollander@hotmail.de>
+Date:   Tue Sep 23 09:47:37 2014 +0200
+
+    updated fastcsv lib
+
+ pom.xml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit d76958e63032f3114b65313c6cc7e808c9f4d17f
+Author: Rene8888 <rene.hollander@hotmail.de>
+Date:   Mon Sep 22 19:30:57 2014 +0200
+
+    removed unused dependencies
+
+ pom.xml | 10 ----------
+ 1 file changed, 10 deletions(-)
+
+commit fe3f2e302c8b776585b44f2f27f428aa592772b8
+Author: Rene8888 <rene.hollander@hotmail.de>
+Date:   Mon Sep 22 19:30:37 2014 +0200
+
+    warehouser now saves supplies and threadees to disk
+
+ .../java/tgm/sew/hit/roboterfabrik/Warehouser.java | 23 ++++++++++++++++++++--
+ 1 file changed, 21 insertions(+), 2 deletions(-)
+
+commit e6538cedf82d8864c7baf48a1d616a41054fed12
+Author: Samuel Schober <sschober@student.tgm.ac.at>
+Date:   Mon Sep 22 14:36:23 2014 +0200
+
+    Changed Name in comments
+
+ src/main/java/tgm/sew/hit/roboterfabrik/part/Part.java     | 2 +-
+ src/main/java/tgm/sew/hit/roboterfabrik/supply/Supply.java | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+commit f703e603c3ac656561aee2559e654d588ab16f98
+Author: Samuel Schober <sschober@student.tgm.ac.at>
+Date:   Mon Sep 22 14:35:02 2014 +0200
+
+    Supplier, Supply und Part implementiert
+    Watchable hinzugefuegt
+
+ files/protokoll/Dokumentation.docx                 | Bin 222716 -> 222138 bytes
+ .../java/tgm/sew/hit/roboterfabrik/Employee.java   |  21 +++---
+ .../java/tgm/sew/hit/roboterfabrik/Simulation.java |   5 ++
+ .../java/tgm/sew/hit/roboterfabrik/part/Part.java  |  16 ++--
+ .../tgm/sew/hit/roboterfabrik/supply/Supplier.java |  52 ++++++++++---
+ .../tgm/sew/hit/roboterfabrik/supply/Supply.java   |   5 --
+ .../roboterfabrik/watchdog/AbstractWatchable.java  |  34 +++++++++
+ .../sew/hit/roboterfabrik/watchdog/Watchable.java  |  16 ++++
+ .../sew/hit/roboterfabrik/watchdog/Watchdog.java   |  81 +++++++++++++++++++++
+ 9 files changed, 195 insertions(+), 35 deletions(-)
+
+commit f34456898d14330d9065a4d2e024b69fbc8f1335
+Author: Samuel Schober <sschober@student.tgm.ac.at>
+Date:   Mon Sep 22 13:21:51 2014 +0200
+
+    Commented on Part, Supply and Supplier.
+    Added basic geter and seter.
+    Wrote code for Constructors.
+
+ .../java/tgm/sew/hit/roboterfabrik/part/Part.java  | 72 ++++++++++++++++++++--
+ .../tgm/sew/hit/roboterfabrik/supply/Supplier.java | 13 ++++
+ .../tgm/sew/hit/roboterfabrik/supply/Supply.java   | 22 ++++++-
+ 3 files changed, 99 insertions(+), 8 deletions(-)
+
+commit f6440db5ed41b772285688e97dd418fbbd1b8b99
+Author: Samuel Schober <sschober@student.tgm.ac.at>
+Date:   Mon Sep 22 07:59:28 2014 +0200
+
+    Corrected comments with umlauts.
+
+ src/main/java/tgm/sew/hit/roboterfabrik/Office.java   | 8 ++++----
+ src/main/java/tgm/sew/hit/roboterfabrik/Threadee.java | 6 +++---
+ 2 files changed, 7 insertions(+), 7 deletions(-)
+
+commit f0be04495f5b92b8577ce6226906aed23bd3a80c
+Author: Simon <swortha@student.tgm.ac.at>
+Date:   Sat Sep 20 20:01:50 2014 +0200
+
+    added Javadoc and implemented some features
+
+ .classpath                                         |  5 ++
+ pom.xml                                            |  2 +-
+ .../java/tgm/sew/hit/roboterfabrik/Employee.java   | 35 +++++++-
+ .../java/tgm/sew/hit/roboterfabrik/Office.java     | 36 ++++++---
+ .../java/tgm/sew/hit/roboterfabrik/Simulation.java |  4 +
+ .../java/tgm/sew/hit/roboterfabrik/Threadee.java   | 94 +++++++++++++++++++---
+ .../java/tgm/sew/hit/roboterfabrik/part/Part.java  |  4 +-
+ 7 files changed, 155 insertions(+), 25 deletions(-)
+
+commit 470b3330fe2e473117d4a195f9fe439840665571
+Author: Simon <swortha@student.tgm.ac.at>
+Date:   Fri Sep 19 21:10:48 2014 +0200
+
+    Implementierung von Office.
+    Implementierung von Threadee.
+    Dokumentation upgedated.
+
+ files/protokoll/Dokumentation.docx                 | Bin 222738 -> 222716 bytes
+ .../java/tgm/sew/hit/roboterfabrik/Office.java     |  35 ++++++++++++++++++---
+ .../java/tgm/sew/hit/roboterfabrik/Threadee.java   |  26 ++++++++++++---
+ 3 files changed, 51 insertions(+), 10 deletions(-)
+
+commit c98f1e0cd092782d66b3d0e14d4473dcc63331e5
+Author: Rene8888 <rene.hollander@hotmail.de>
+Date:   Sat Sep 13 18:28:00 2014 +0200
+
+    added Simon Worthas Dokumentation
+
+ files/protokoll/Dokumentation.docx | Bin 0 -> 222738 bytes
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit b3cb6a039347ea82d9fc272ac2519a736d0560ff
+Author: Rene8888 <rene.hollander@hotmail.de>
+Date:   Sat Sep 13 18:27:34 2014 +0200
+
+    updated uml
+
+ files/protokoll/UML.asta | Bin 23802 -> 24326 bytes
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 286be2a6d1d1b4f973ca8d8dbab431155b9caea6
+Author: Rene8888 <rene.hollander@hotmail.de>
+Date:   Sat Sep 13 17:58:10 2014 +0200
+
+    simulation now creates a warehouser
+    added close method to gracefully stop simulation
+
+ .../java/tgm/sew/hit/roboterfabrik/Simulation.java | 22 +++++++++++++++++++++-
+ 1 file changed, 21 insertions(+), 1 deletion(-)
+
+commit 9a1230137f912cbf70c4dc41aead66edba9b816b
+Author: Rene8888 <rene.hollander@hotmail.de>
+Date:   Sat Sep 13 17:57:36 2014 +0200
+
+    warehouser now opens files using fastcsv
+
+ .../java/tgm/sew/hit/roboterfabrik/Warehouser.java | 61 ++++++++++++++++++++--
+ 1 file changed, 58 insertions(+), 3 deletions(-)
+
+commit 2722b69964f40cdda06b4976f5c6c8b5ef6af4a8
+Author: Rene8888 <rene.hollander@hotmail.de>
+Date:   Sat Sep 13 17:52:14 2014 +0200
+
+    added filename to parttype
+
+ .../tgm/sew/hit/roboterfabrik/part/PartType.java    | 21 ++++++++++++++++-----
+ 1 file changed, 16 insertions(+), 5 deletions(-)
+
+commit 301d7cdd07eadc219370a23afd7f92c68c99761d
+Author: Rene8888 <rene.hollander@hotmail.de>
+Date:   Sat Sep 13 17:22:25 2014 +0200
+
+    fixed umlaut and wrong logger class in supplier to be able to build
+    project
+
+ .../java/tgm/sew/hit/roboterfabrik/supply/Supplier.java  | 16 ++++++----------
+ 1 file changed, 6 insertions(+), 10 deletions(-)
+
+commit d99efaede7bc9d4795c0f6c3ecdec58e1dbc33f6
+Author: Rene8888 <rene.hollander@hotmail.de>
+Date:   Sat Sep 13 17:13:47 2014 +0200
+
+    added fastcsv library
+    added warehouser constructor
+
+ pom.xml                                                 | 13 +++++++++++++
+ src/main/java/tgm/sew/hit/roboterfabrik/Warehouser.java | 11 +++++++++--
+ 2 files changed, 22 insertions(+), 2 deletions(-)
+
+commit 55524df7e4de50cfcdcc7260f349aceda7a9fdef
+Author: Samuel Schober <sschober@student.tgm.ac.at>
+Date:   Fri Sep 12 20:35:56 2014 +0200
+
+    Commented on Supplier, added HashCode on Supply and differed the Part
+    Class
+
+ .../java/tgm/sew/hit/roboterfabrik/part/Part.java  |  2 +-
+ .../tgm/sew/hit/roboterfabrik/supply/Supplier.java | 15 +++++++++--
+ .../tgm/sew/hit/roboterfabrik/supply/Supply.java   | 30 ++++++++++++++++++++++
+ 3 files changed, 44 insertions(+), 3 deletions(-)
+
+commit 8826cf6930f81e553b629fe601bbd608bdfe4996
+Author: Rene8888 <rene.hollander@hotmail.de>
+Date:   Fri Sep 12 20:22:26 2014 +0200
+
+    finished comments
+
+ .../java/tgm/sew/hit/roboterfabrik/Simulation.java | 63 ++++++++++++++++++++++
+ 1 file changed, 63 insertions(+)
+
+commit f0401701afd99569683bf54dd1b801711e5dc717
+Author: Rene8888 <rene.hollander@hotmail.de>
+Date:   Fri Sep 12 20:07:37 2014 +0200
+
+    added cli parsing
+    fixed log4j2 config not found
+
+ .classpath                                         |   2 +-
+ config/Run Roboterfabrik.launch                    |   5 +-
+ pom.xml                                            |   1 +
+ .../java/tgm/sew/hit/roboterfabrik/Simulation.java | 140 +++++++++++++++++++--
+ src/test/resources/empty                           |   0
+ src/test/resources/log4j2-test.xml                 |  21 ++++
+ 6 files changed, 158 insertions(+), 11 deletions(-)
+
+commit ede56f18769216f0bdc66a42eff156d810eed8f5
+Author: Rene8888 <rene.hollander@hotmail.de>
+Date:   Fri Sep 12 18:39:26 2014 +0200
+
+    added all javadoc comments
+
+ .../java/tgm/sew/hit/roboterfabrik/Simulation.java | 26 ++++++++++++++++++++++
+ 1 file changed, 26 insertions(+)
+
+commit c202185fb10d013748003c49f9b8d4253550eced
+Author: Rene8888 <rene.hollander@hotmail.de>
+Date:   Fri Sep 12 18:33:01 2014 +0200
+
+    wierd stuff?
+
+ .gitignore | 2 ++
+ pom.xml    | 5 +++++
+ 2 files changed, 7 insertions(+)
+
+commit 38224212e3377df0ebcd63864a70769b6999bab7
+Author: Rene8888 <rene.hollander@hotmail.de>
+Date:   Fri Sep 12 13:18:24 2014 +0200
+
+    importet generated java from astah
+    started syntax highlighting my part
+
+ config/Run Roboterfabrik.launch                    |   4 +-
+ files/protokoll/UML.asta.bak                       | Bin 17778 -> 0 bytes
+ .../java/tgm/sew/hit/roboterfabrik/Employee.java   |  32 +++++++++++
+ .../java/tgm/sew/hit/roboterfabrik/Office.java     |  18 ++++++
+ .../java/tgm/sew/hit/roboterfabrik/Simulation.java |  40 ++++++++++++-
+ .../java/tgm/sew/hit/roboterfabrik/Threadee.java   |  34 +++++++++++
+ .../java/tgm/sew/hit/roboterfabrik/Warehouser.java |  64 +++++++++++++++++++++
+ .../java/tgm/sew/hit/roboterfabrik/part/Part.java  |  33 +++++++++++
+ .../tgm/sew/hit/roboterfabrik/part/PartType.java   |  46 +++++++++++++++
+ .../tgm/sew/hit/roboterfabrik/supply/Supplier.java |  28 +++++++++
+ .../tgm/sew/hit/roboterfabrik/supply/Supply.java   |  22 +++++++
+ src/main/resources/log4j2.xml                      |   2 +-
+ 12 files changed, 318 insertions(+), 5 deletions(-)
+
+commit 54676581a2a99a009dd70e63cc47400ea1d699d4
+Author: Rene8888 <rene.hollander@hotmail.de>
+Date:   Thu Sep 11 19:18:31 2014 +0200
+
+    fixed log4j2 config file location
+    updated gitignore
+    added new run config
+
+ .classpath                                          |  1 +
+ .gitignore                                          |  1 +
+ config/Run Roboterfabrik.launch                     | 17 +++++++++++++++++
+ .../java/tgm/sew/hit/roboterfabrik/Simulation.java  |  7 ++++++-
+ src/main/resources/empty                            |  0
+ src/main/resources/log4j2.xml                       | 21 +++++++++++++++++++++
+ src/test/resources/empty                            |  0
+ src/test/resources/log4j2.xml                       | 13 -------------
+ 8 files changed, 46 insertions(+), 14 deletions(-)
+
+commit 94f91f6265f0e0e43255046302ad1b344b54c87f
+Author: Rene8888 <rene.hollander@hotmail.de>
+Date:   Wed Sep 10 18:00:48 2014 +0200
+
+    finalized uml
+
+ files/protokoll/UML.asta     | Bin 16542 -> 23802 bytes
+ files/protokoll/UML.asta.bak | Bin 0 -> 17778 bytes
+ 2 files changed, 0 insertions(+), 0 deletions(-)
+
+commit bbaeadb58718ca5e6e69c0e3d3c61b48184ebd8f
+Author: Rene8888 <rene.hollander@hotmail.de>
+Date:   Wed Sep 10 16:34:57 2014 +0200
+
+    added log4j2 config file
+
+ src/main/java/tgm/sew/hit/roboterfabrik/Simulation.java |  2 --
+ src/test/resources/empty                                |  0
+ src/test/resources/log4j2.xml                           | 13 +++++++++++++
+ 3 files changed, 13 insertions(+), 2 deletions(-)
+
+commit fe3ee63b0a859546e5b7d93d7d48913fe869a4d5
+Author: Rene8888 <rene.hollander@hotmail.de>
+Date:   Wed Sep 10 16:14:03 2014 +0200
+
+    fixed not empty directories
+
+ src/main/resources/empty | 0
+ src/test/java/empty      | 0
+ src/test/resources/empty | 0
+ 3 files changed, 0 insertions(+), 0 deletions(-)
+
+commit 8988a5da0f9811903d93c50e8a44ade49ae1aa8e
+Author: Rene8888 <rene.hollander@hotmail.de>
+Date:   Wed Sep 10 16:12:36 2014 +0200
+
+    initial commit
+
+ .classpath                                         |  31 ++++
+ .gitignore                                         |   5 +
+ .project                                           |  23 +++
+ config/Build Roboterfabrik.launch                  |  20 +++
+ files/protokoll/UML.asta                           | Bin 0 -> 16542 bytes
+ pom.xml                                            | 178 +++++++++++++++++++++
+ .../java/tgm/sew/hit/roboterfabrik/Simulation.java |  10 ++
+ 7 files changed, 267 insertions(+)
