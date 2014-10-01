@@ -32,7 +32,7 @@ import tgm.sew.hit.roboterfabrik.watchdog.Watchdog;
  */
 public class Simulation implements Watchable {
 
-	private static final Level LOG_LEVEL = Level.INFO;
+	private static final Level LOG_LEVEL = Level.DEBUG;
 	private static final Logger LOGGER = (Logger) LogManager.getLogger(Simulation.class);
 
 	static {
