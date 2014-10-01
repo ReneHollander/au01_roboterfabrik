@@ -10,7 +10,7 @@ import org.junit.Test;
 import tgm.sew.hit.roboterfabrik.Simulation;
 
 /**
- * Testfälle für Simulation
+ * Testfaelle fuer Simulation
  * 
  * @author Simon Wortha & Rene Hollander
  *
@@ -21,7 +21,7 @@ public class SimulationTest {
 	private final File logDir = new File("./test/log");
 
 	/**
-	 * Bevor der nächste Test ausgeführt wird sollten die Test Ordner
+	 * Bevor der naechste Test ausgefuehrt wird sollten die Test Ordner
 	 * zurueckgesetzt werden
 	 */
 	@Before
@@ -31,7 +31,7 @@ public class SimulationTest {
 	}
 
 	/**
-	 * Testet ob getWarehouser auch einen Warehouser zurück liefert mit dem
+	 * Testet ob getWarehouser auch einen Warehouser zurueck liefert mit dem
 	 * weiter gearbeitet werden kann
 	 */
 	@Test
@@ -45,7 +45,7 @@ public class SimulationTest {
 	}
 
 	/**
-	 * Test ob getOffice auch ein Office zurück liefert mit dem weiter
+	 * Test ob getOffice auch ein Office zurueck liefert mit dem weiter
 	 * gearbeitet werden kann
 	 */
 	@Test
@@ -59,8 +59,8 @@ public class SimulationTest {
 	}
 
 	/**
-	 * Testet ob die toString Methode richtig arbeitet, und den gewünschten
-	 * String zurück liefert
+	 * Testet ob die toString Methode richtig arbeitet, und den gewuenschten
+	 * String zurueck liefert
 	 */
 	@Test
 	public void testToString() {

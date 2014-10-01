@@ -29,7 +29,7 @@ public class TestWarehouser {
 	private final File testDir = new File("./test");
 
 	/**
-	 * Bevor der nächste Test ausgeführt wird sollten die Test Ordner
+	 * Bevor der naechste Test ausgefuehrt wird sollten die Test Ordner
 	 * zurueckgesetzt werden
 	 */
 	@Before

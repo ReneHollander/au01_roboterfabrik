@@ -9,7 +9,7 @@ import tgm.sew.hit.roboterfabrik.part.PartType;
 import tgm.sew.hit.roboterfabrik.supply.Supply;
 
 /**
- * Testfälle zu Supply
+ * Testfaelle zu Supply
  * 
  * @author Simon Wortha
  *
@@ -17,7 +17,7 @@ import tgm.sew.hit.roboterfabrik.supply.Supply;
 public class SupplyTest {
 
 	/**
-	 * Testet ob getPart auch den richtigen Roboterteil zurück liefert
+	 * Testet ob getPart auch den richtigen Roboterteil zurueck liefert
 	 */
 	@Test
 	public void testGetPart() {
@@ -30,7 +30,7 @@ public class SupplyTest {
 	}
 
 	/**
-	 * Testet ob toString auch den gewünschten String zurück liefert
+	 * Testet ob toString auch den gewuenschten String zurueck liefert
 	 */
 	@Test
 	public void testToString() {
@@ -43,7 +43,7 @@ public class SupplyTest {
 	}
 
 	/**
-	 * Testet ob hashCode auch die gewünschten Werte berechnet
+	 * Testet ob hashCode auch die gewuenschten Werte berechnet
 	 */
 	@Test
 	public void testHashCode() {

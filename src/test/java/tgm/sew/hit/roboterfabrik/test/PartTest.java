@@ -10,7 +10,7 @@ import tgm.sew.hit.roboterfabrik.part.Part;
 import tgm.sew.hit.roboterfabrik.part.PartType;
 
 /**
- * Testfälle für Part
+ * Testfaelle fuer Part
  * 
  * @author Simon Wortha
  */
@@ -227,7 +227,7 @@ public class PartTest {
 
 	/**
 	 * Testet ob die toString Methode richtig arbeitet, genau genommen ob sie
-	 * auch den richtigen String zurück gibt
+	 * auch den richtigen String zurueck gibt
 	 */
 	@Test
 	public void testToString() {
@@ -272,7 +272,7 @@ public class PartTest {
 
 	/**
 	 * Testet ob die Equals Methode richtig arbeitet, genau genommen ob sie auch
-	 * wirklich die Neuen Nummern zurück gibt
+	 * wirklich die Neuen Nummern zurueck gibt
 	 */
 	@Test
 	public void testSetNumbers() {

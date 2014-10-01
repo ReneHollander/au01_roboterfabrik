@@ -22,7 +22,7 @@ public class EmployeeTest {
 	private final File logDir = new File("./test/log");
 
 	/**
-	 * Bevor der nächste Test ausgeführt wird sollten die Test Ordner
+	 * Bevor der naechste Test ausgefuehrt wird sollten die Test Ordner
 	 * zurueckgesetzt werden
 	 */
 	@Before

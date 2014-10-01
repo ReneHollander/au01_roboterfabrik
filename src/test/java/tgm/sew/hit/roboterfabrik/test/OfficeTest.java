@@ -14,7 +14,7 @@ import tgm.sew.hit.roboterfabrik.Office;
 public class OfficeTest {
 
 	/**
-	 * Testet ob die nächste und erste ID gültig ist
+	 * Testet ob die naechste und erste ID gueltig ist
 	 */
 	@Test
 	public void testMitarbeiterId() {
@@ -23,7 +23,7 @@ public class OfficeTest {
 	}
 
 	/**
-	 * Testet ob die nächste und erste ID gültig ist
+	 * Testet ob die naechste und erste ID gueltig ist
 	 */
 	@Test
 	public void testWorkerId() {
@@ -32,7 +32,7 @@ public class OfficeTest {
 	}
 
 	/**
-	 * Testet ob die nächste und erste ID gültig ist
+	 * Testet ob die naechste und erste ID gueltig ist
 	 */
 	@Test
 	public void testSupplierId() {
