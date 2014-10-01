@@ -1,3 +1,21 @@
+commit c816cd8cb455b16260a186e0ab22572daf407651
+Author: ReneHollander <rene.hollander@hotmail.de>
+Date:   Wed Oct 1 20:31:57 2014 +0200
+
+    fixed broken char
+
+ src/test/java/tgm/sew/hit/roboterfabrik/test/SupplierTest.java | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 1065d3c11c619ebfdc4950ff75794ac325bb7c8a
+Author: ReneHollander <rene.hollander@hotmail.de>
+Date:   Wed Oct 1 20:30:54 2014 +0200
+
+    added repo.log
+
+ files/protokoll/repo.log | 869 +++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 869 insertions(+)
+
 commit 2a7b773237188808c2b128b449ee342f9512281f
 Author: ReneHollander <rene.hollander@hotmail.de>
 Date:   Wed Oct 1 20:30:04 2014 +0200
