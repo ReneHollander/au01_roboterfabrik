@@ -11,17 +11,28 @@ import tgm.sew.hit.roboterfabrik.Simulation;
 import tgm.sew.hit.roboterfabrik.part.PartType;
 import tgm.sew.hit.roboterfabrik.supply.Supplier;
 
+/**
+ * Testet den Supplier
+ * 
+ * @author Samuel
+ */
 public class SupplierTest {
 
 	private final File testDir = new File("./test");
 	private final File logDir = new File("./test/log");
 
+	/**
+	 * Löscht die Files bevor sie neu erstellt werden
+	 */
 	@Before
 	public void resetFiles() {
 		this.testDir.delete();
 		this.logDir.delete();
 	}
 
+	/**
+	 * Testet ob ein Supplier erstellt werden kann
+	 */
 	@Test
 	public void testCreateSupplier() {
 		this.testDir.mkdirs();
@@ -33,6 +44,9 @@ public class SupplierTest {
 		s.stop();
 	}
 
+	/**
+	 * Testet ob mehrere Supplier gleichzeitig laufen koennen
+	 */
 	@Test
 	public void testCreateSupplierIfExist() {
 		this.testDir.mkdirs();
@@ -46,6 +60,9 @@ public class SupplierTest {
 		s2.stop();
 	}
 
+	/**
+	 * Testet ob die Methode toString einen richtigen Wert ausgibt
+	 */
 	@Test
 	public void testSupplierToString() {
 		this.testDir.mkdirs();
@@ -54,9 +71,13 @@ public class SupplierTest {
 		final Simulation sim = new Simulation(100, 1, 1, this.testDir, this.logDir);
 
 		Supplier s = new Supplier(sim, 1);
-		s.toString();
+		String st = s.toString();
+		assertEquals(st, s.toString());
 	}
 
+	/**
+	 * Testet ob hashCode den richtigen Hash Code generiert
+	 */
 	@Test
 	public void testSupplierHashCode() {
 		this.testDir.mkdirs();
@@ -65,9 +86,13 @@ public class SupplierTest {
 		final Simulation sim = new Simulation(100, 1, 1, this.testDir, this.logDir);
 
 		Supplier s = new Supplier(sim, 1);
-		s.hashCode();
+		int hc = ((s == null) ? 0 : s.hashCode());
+		assertEquals(hc, s.hashCode());
 	}
 
+	/**
+	 * Testet ob der Supplier gleich dem Supplier ist
+	 */
 	@Test
 	public void testSupplierEquals() {
 		this.testDir.mkdirs();
@@ -79,6 +104,9 @@ public class SupplierTest {
 		assertEquals(true, s.equals(s));
 	}
 
+	/**
+	 * Testet ob der Supplier mit einer falschen Eingabe gleich ist
+	 */
 	@Test
 	public void testSupplierNotEquals() {
 		this.testDir.mkdirs();
@@ -90,6 +118,9 @@ public class SupplierTest {
 		assertEquals(false, s.equals("Hallo Welt"));
 	}
 
+	/**
+	 * Testet ob ein Supplier gleich mit null ist
+	 */
 	@Test
 	public void testSupplierEqualsNull() {
 		this.testDir.mkdirs();
@@ -98,12 +129,11 @@ public class SupplierTest {
 		final Simulation sim = new Simulation(100, 1, 1, this.testDir, this.logDir);
 
 		Supplier s = new Supplier(sim, 1);
-		Supplier s2 = new Supplier(sim, 2);
 		assertEquals(false, s.equals(null));
 	}
 
 	/**
-	 * Testet ob 2 komplett unterschiedliche Supplier nicht gleich sind
+	 * Testet ob zwei komplett unterschiedliche Supplier gleich sind
 	 */
 	@Test
 	public void testSupplierEqualsOtherSupplier1() {
@@ -120,7 +150,8 @@ public class SupplierTest {
 	}
 
 	/**
-	 * Testet ob 2 Supplier bei denen sich nur die ID unterscheidet gleich sind
+	 * Testet ob zwei Supplier bei denen sich nur die ID unterscheidet gleich
+	 * sind
 	 */
 	@Test
 	public void testSupplierEqualsOtherSupplier2() {
@@ -137,7 +168,7 @@ public class SupplierTest {
 	}
 
 	/**
-	 * Testet 2 Supplier ob sie gleich sind
+	 * Testet ob zwei Supplier gleich sind
 	 */
 	@Test
 	public void testSupplierEqualsOtherSupplier3() {
