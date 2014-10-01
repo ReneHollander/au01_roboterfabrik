@@ -76,7 +76,17 @@ public class Supplier extends AbstractWatchable {
 	private void changePartType() {
 		// Setzt den part der momentan geliefert ist auf einen zufaelligen aus
 		// dem enum
-		this.currentPartType = PartType.values()[this.random.nextInt(PartType.values().length)];
+		this.setNextPartType(PartType.values()[this.random.nextInt(PartType.values().length)]);
+	}
+
+	/**
+	 * Wechselt den zu liefernden PartType
+	 * 
+	 * @param type
+	 *            PartType den der Lieferant in Zukunft liefert
+	 */
+	public void setNextPartType(PartType type) {
+		this.currentPartType = type;
 	}
 
 	@Override
@@ -88,7 +98,7 @@ public class Supplier extends AbstractWatchable {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((currentPartType == null) ? 0 : currentPartType.hashCode());
+		result = prime * result + currentPartType.hashCode();
 		result = prime * result + (int) (id ^ (id >>> 32));
 		return result;
 	}

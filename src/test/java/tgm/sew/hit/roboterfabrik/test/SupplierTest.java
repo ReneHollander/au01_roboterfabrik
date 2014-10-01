@@ -1,6 +1,6 @@
 package tgm.sew.hit.roboterfabrik.test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import java.io.File;
 
@@ -8,10 +8,8 @@ import org.junit.Before;
 import org.junit.Test;
 
 import tgm.sew.hit.roboterfabrik.Simulation;
-import tgm.sew.hit.roboterfabrik.part.Part;
 import tgm.sew.hit.roboterfabrik.part.PartType;
 import tgm.sew.hit.roboterfabrik.supply.Supplier;
-import tgm.sew.hit.roboterfabrik.supply.Supply;
 
 public class SupplierTest {
 
@@ -104,15 +102,55 @@ public class SupplierTest {
 		assertEquals(false, s.equals(null));
 	}
 
+	/**
+	 * Testet ob 2 komplett unterschiedliche Supplier nicht gleich sind
+	 */
 	@Test
-	public void testSupplierEqualsOtherSupplier() {
+	public void testSupplierEqualsOtherSupplier1() {
 		this.testDir.mkdirs();
 		this.logDir.mkdirs();
 
 		final Simulation sim = new Simulation(100, 1, 1, this.testDir, this.logDir);
 
 		Supplier s = new Supplier(sim, 1);
+		s.setNextPartType(PartType.ARM);
 		Supplier s2 = new Supplier(sim, 2);
+		s2.setNextPartType(PartType.EYE);
 		assertEquals(false, s.equals(s2));
 	}
+
+	/**
+	 * Testet ob 2 Supplier bei denen sich nur die ID unterscheidet gleich sind
+	 */
+	@Test
+	public void testSupplierEqualsOtherSupplier2() {
+		this.testDir.mkdirs();
+		this.logDir.mkdirs();
+
+		final Simulation sim = new Simulation(100, 1, 1, this.testDir, this.logDir);
+
+		Supplier s = new Supplier(sim, 1);
+		s.setNextPartType(PartType.EYE);
+		Supplier s2 = new Supplier(sim, 2);
+		s2.setNextPartType(PartType.EYE);
+		assertEquals(false, s.equals(s2));
+	}
+
+	/**
+	 * Testet 2 Supplier ob sie gleich sind
+	 */
+	@Test
+	public void testSupplierEqualsOtherSupplier3() {
+		this.testDir.mkdirs();
+		this.logDir.mkdirs();
+
+		final Simulation sim = new Simulation(100, 1, 1, this.testDir, this.logDir);
+
+		Supplier s = new Supplier(sim, 1);
+		s.setNextPartType(PartType.EYE);
+		Supplier s2 = new Supplier(sim, 1);
+		s2.setNextPartType(PartType.EYE);
+		assertEquals(true, s.equals(s2));
+	}
+
 }

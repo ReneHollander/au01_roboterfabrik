@@ -132,4 +132,34 @@ public class TestWarehouser {
 		assertEquals("Threadee-ID0,Mitarbeiter-ID0,Kettenantrieb,0", br.readLine());
 		br.close();
 	}
+
+	/**
+	 * Testet ob der Lagermitarbeiter mit einem fehlerhaften Threadee umgehen
+	 * kann
+	 * 
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 */
+	@Test
+	public void testStoreBrokenThreadee() throws FileNotFoundException, IOException {
+		this.testDir.mkdirs();
+		Warehouser w = new Warehouser(this.testDir);
+		assertEquals(false, w.storeThreadee(null));
+		w.close();
+	}
+
+	/**
+	 * Testet ob der Lagermitarbeiter mit einem Fehlerhaften Supply umgehen kann
+	 * 
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 */
+	@Test
+	public void testStoreBrokenSupply() throws FileNotFoundException, IOException {
+		this.testDir.mkdirs();
+		Warehouser w = new Warehouser(this.testDir);
+		assertEquals(false, w.storeSupply(new Supply(new Part(PartType.EYE, null))));
+		w.close();
+	}
+
 }

@@ -1,10 +1,10 @@
 package tgm.sew.hit.roboterfabrik.test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
-import java.util.List;
 import java.io.File;
 import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -63,31 +63,18 @@ public class ThreadeeTest {
 		assertEquals(e, t.getCreator());
 	}
 
-	/**
-	 * @Test public void testGetThreadeeParts() { this.testDir.mkdirs();
-	 *       this.logDir.mkdirs(); List<Part> parts;
-	 * 
-	 *       final Simulation sim = new Simulation(100, 1, 1, this.testDir,
-	 *       this.logDir);
-	 * 
-	 *       Employee e = new Employee(sim, 1); Threadee t = new Threadee(1, e,
-	 *       parts);
-	 * 
-	 *       assertEquals(, t.getParts()); }
-	 **/
+	@Test
+	public void testThreadeeCSV() {
+		this.testDir.mkdirs();
+		this.logDir.mkdirs();
 
-	/**
-	 * @Test public void testThreadeeCSV() { this.testDir.mkdirs();
-	 *       this.logDir.mkdirs();
-	 * 
-	 *       final Simulation sim = new Simulation(100, 1, 1, this.testDir,
-	 *       this.logDir);
-	 * 
-	 *       Employee e = new Employee(sim, 1); Threadee t = new Threadee(1, e,
-	 *       null);
-	 * 
-	 *       assertEquals(1, t.getID()); }
-	 **/
+		final Simulation sim = new Simulation(100, 1, 1, this.testDir, this.logDir);
+
+		Employee e = new Employee(sim, 1);
+		Threadee t = new Threadee(1, e, null);
+
+		assertEquals(1, t.getID());
+	}
 
 	@Test
 	public void testThreadeeEquals() {
@@ -129,20 +116,6 @@ public class ThreadeeTest {
 
 		assertEquals(false, t.equals(t2));
 	}
-
-	/**
-	 * @Test public void testThreadeePartsEqualNull() { this.testDir.mkdirs();
-	 *       this.logDir.mkdirs();
-	 * 
-	 *       final Simulation sim = new Simulation(100, 1, 1, this.testDir,
-	 *       this.logDir);
-	 * 
-	 *       Employee e = new Employee(sim, 1); Employee e2 = new Employee(sim,
-	 *       2); Threadee t = new Threadee(1, null, null); Threadee t2 = new
-	 *       Threadee(2, null, null);
-	 * 
-	 *       assertEquals(true, t.getParts().equals(t2.getParts())); }
-	 **/
 
 	@Test
 	public void testGetParts() {

@@ -3,7 +3,7 @@ package tgm.sew.hit.roboterfabrik.part;
 import java.util.HashMap;
 
 /**
- * Zischen den verschiedenen Teilen wird mithilfe des Enums PartType
+ * Zwischen den verschiedenen Teilen wird mithilfe des Enums PartType
  * unterschieden
  * 
  * @author Rene Hollander

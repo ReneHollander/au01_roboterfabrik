@@ -3,7 +3,6 @@ package tgm.sew.hit.roboterfabrik;
 import java.io.Closeable;
 import java.io.File;
 import java.io.FileOutputStream;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.EnumMap;
 import java.util.Map;
@@ -199,8 +198,8 @@ public class Warehouser implements Closeable {
 				LOGGER.debug("Successfully stored " + threadee.toString());
 			}
 			return true;
-		} catch (IOException e) {
-			LOGGER.error("Error while trying to store assembled " + threadee.toString(), e);
+		} catch (Exception e) {
+			LOGGER.error("Error while trying to store assembled " + threadee, e);
 			return false;
 		}
 	}
