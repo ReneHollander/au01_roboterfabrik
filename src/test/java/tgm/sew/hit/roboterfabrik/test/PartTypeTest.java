@@ -7,7 +7,7 @@ import org.junit.Test;
 import tgm.sew.hit.roboterfabrik.part.PartType;
 
 /**
- * Testfälle für PartType
+ * Testfaelle fuer PartType
  * 
  * @author Simon Wortha
  */
@@ -95,7 +95,7 @@ public class PartTypeTest {
 
 	/**
 	 * Testet ob die getAmountForThreadee Methode richtig arbeitet, genau
-	 * genommen ob die richtige ANzahl der benötogen Teilen zurück gegeben wird
+	 * genommen ob die richtige Anzahl der benoetigten Teile zurueck gegeben wird
 	 */
 	@Test
 	public void testGetAmountForThreadee1() {
@@ -105,7 +105,7 @@ public class PartTypeTest {
 
 	/**
 	 * Testet ob die getAmountForThreadee Methode richtig arbeitet, genau
-	 * genommen ob die richtige ANzahl der benötogen Teilen zurück gegeben wird
+	 * genommen ob die richtige Anzahl der benoetigten Teile zurueck gegeben wird
 	 */
 	@Test
 	public void testGetAmountForThreadee2() {
@@ -115,7 +115,7 @@ public class PartTypeTest {
 
 	/**
 	 * Testet ob die getAmountForThreadee Methode richtig arbeitet, genau
-	 * genommen ob die richtige ANzahl der benötogen Teilen zurück gegeben wird
+	 * genommen ob die richtige Anzahl der benoetigten Teile zurueck gegeben wird
 	 */
 	@Test
 	public void testGetAmountForThreadee3() {
@@ -125,7 +125,7 @@ public class PartTypeTest {
 
 	/**
 	 * Testet ob die getAmountForThreadee Methode richtig arbeitet, genau
-	 * genommen ob die richtige ANzahl der benötogen Teilen zurück gegeben wird
+	 * genommen ob die richtige Anzahl der benoetigten Teile zurueck gegeben wird
 	 */
 	@Test
 	public void testGetAmountForThreadee4() {
@@ -135,7 +135,7 @@ public class PartTypeTest {
 
 	/**
 	 * Testet ob die from Methode richtig arbeitet, genau genommen ob der
-	 * richtige Typ zurück gegeben wird
+	 * richtige Typ zurueck gegeben wird
 	 */
 	@Test
 	public void testFromName1() {
@@ -144,7 +144,7 @@ public class PartTypeTest {
 
 	/**
 	 * Testet ob die from Methode richtig arbeitet, genau genommen ob der
-	 * richtige Typ zurück gegeben wird
+	 * richtige Typ zurueck gegeben wird
 	 */
 	@Test
 	public void testFromName2() {
@@ -153,7 +153,7 @@ public class PartTypeTest {
 
 	/**
 	 * Testet ob die from Methode richtig arbeitet, genau genommen ob der
-	 * richtige Typ zurück gegeben wird
+	 * richtige Typ zurueck gegeben wird
 	 */
 	@Test
 	public void testFromName3() {
@@ -162,7 +162,7 @@ public class PartTypeTest {
 
 	/**
 	 * Testet ob die from Methode richtig arbeitet, genau genommen ob der
-	 * richtige Typ zurück gegeben wird
+	 * richtige Typ zurueck gegeben wird
 	 */
 	@Test
 	public void testFromName4() {
