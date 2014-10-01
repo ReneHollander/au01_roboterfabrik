@@ -15,17 +15,30 @@ import tgm.sew.hit.roboterfabrik.Threadee;
 import tgm.sew.hit.roboterfabrik.part.Part;
 import tgm.sew.hit.roboterfabrik.part.PartType;
 
+/**
+ * Testet den Threadee
+ * 
+ * @author Samuel Schober
+ * 
+ */
 public class ThreadeeTest {
 
 	private final File testDir = new File("./test");
 	private final File logDir = new File("./test/log");
 
+	/**
+	 * Loescht die Files bevor sie erstellt werden damit keine Errors eintraeten
+	 */
 	@Before
 	public void resetFiles() {
 		this.testDir.delete();
 		this.logDir.delete();
 	}
 
+	/**
+	 * Testet ob ein neuer Thredee erstellt werden kann
+	 */
+	@SuppressWarnings("unused")
 	@Test
 	public void testCreateThreadee() {
 		this.testDir.mkdirs();
@@ -37,6 +50,9 @@ public class ThreadeeTest {
 		Threadee t = new Threadee(1, e, null);
 	}
 
+	/**
+	 * Testet ob die Methode getID den richtigen Wert zurueck gibt
+	 */
 	@Test
 	public void testGetThreadeeID() {
 		this.testDir.mkdirs();
@@ -50,6 +66,9 @@ public class ThreadeeTest {
 		assertEquals(1, t.getID());
 	}
 
+	/**
+	 * Testet ob die Methode getCreator den richtigen Employee zurueck gibt
+	 */
 	@Test
 	public void testGetThreadeeCreator() {
 		this.testDir.mkdirs();
@@ -63,19 +82,10 @@ public class ThreadeeTest {
 		assertEquals(e, t.getCreator());
 	}
 
-	@Test
-	public void testThreadeeCSV() {
-		this.testDir.mkdirs();
-		this.logDir.mkdirs();
-
-		final Simulation sim = new Simulation(100, 1, 1, this.testDir, this.logDir);
-
-		Employee e = new Employee(sim, 1);
-		Threadee t = new Threadee(1, e, null);
-
-		assertEquals(1, t.getID());
-	}
-
+	/**
+	 * Testet ob die equal Methode richtig funktioniert und eine richtige
+	 * Uebereinstimmung zweier Threadees moeglich ist
+	 */
 	@Test
 	public void testThreadeeEquals() {
 		this.testDir.mkdirs();
@@ -89,6 +99,10 @@ public class ThreadeeTest {
 		assertEquals(true, t.equals(t));
 	}
 
+	/**
+	 * Testet ob die equal Methode richtig funktioniert indem man den zu
+	 * vergleichenden Wert auf null setzt
+	 */
 	@Test
 	public void testThreadeeEqualsNull() {
 		this.testDir.mkdirs();
@@ -102,7 +116,12 @@ public class ThreadeeTest {
 		assertEquals(false, t.equals(null));
 	}
 
-	@Test
+	/**
+	 * Testet ob der Erschaffer des Threadees null sein kann und die equals
+	 * Methode eine Uebereinstimmung erkennt
+	 */
+	@SuppressWarnings("unused")
+	@Test(expected = java.lang.NullPointerException.class)
 	public void testThreadeeCreatorEqualsNull() {
 		this.testDir.mkdirs();
 		this.logDir.mkdirs();
@@ -110,13 +129,15 @@ public class ThreadeeTest {
 		final Simulation sim = new Simulation(100, 1, 1, this.testDir, this.logDir);
 
 		Employee e = new Employee(sim, 1);
-		Employee e2 = new Employee(sim, 2);
 		Threadee t = new Threadee(1, null, null);
-		Threadee t2 = new Threadee(2, null, null);
 
-		assertEquals(false, t.equals(t2));
+		assertEquals(true, (t.getCreator()).equals(t.getCreator()));
 	}
 
+	/**
+	 * Testet ob die richtigen Teile bei der getParts Abfrage zurueck gegeben
+	 * werden
+	 */
 	@Test
 	public void testGetParts() {
 		this.testDir.mkdirs();
@@ -152,6 +173,10 @@ public class ThreadeeTest {
 		assertEquals(list, t.getParts());
 	}
 
+	/**
+	 * Testet ob die Teile inklusive ID richtig zu einem String zusammengefuegt
+	 * werden
+	 */
 	@Test
 	public void testToString() {
 		this.testDir.mkdirs();
@@ -188,6 +213,9 @@ public class ThreadeeTest {
 				t.toString());
 	}
 
+	/**
+	 * Testet ob die Methode hashCode einen richtigen Hash Code generiert
+	 */
 	@Test
 	public void testHashCode1() {
 		this.testDir.mkdirs();
@@ -229,6 +257,9 @@ public class ThreadeeTest {
 		assertEquals(result, t.hashCode());
 	}
 
+	/**
+	 * Testet ob equals zwei verschiedene Threadees erkennt
+	 */
 	@Test
 	public void testEquals() {
 		this.testDir.mkdirs();
@@ -265,6 +296,9 @@ public class ThreadeeTest {
 		assertEquals(false, t.equals(t2));
 	}
 
+	/**
+	 * Testet ob der CSV Record fuer den Threadee richtig eingetragen wird
+	 */
 	@Test
 	public void testFastCSVRecord() {
 		this.testDir.mkdirs();
