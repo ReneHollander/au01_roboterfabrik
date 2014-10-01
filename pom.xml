@@ -74,6 +74,8 @@
 				<directory>files/</directory>
 				<includes>
 					<include>**/*.pdf</include>
+					<include>**/*.asta</include>
+					<include>**/*.log</include>
 				</includes>
 			</resource>
 		</resources>
@@ -125,7 +127,7 @@
 				<version>2.9.1</version>
 				<configuration>
 					<reportOutputDirectory>${basedir}/target/classes</reportOutputDirectory>
-					<destDir>javadoc</destDir>
+					<destDir>doc</destDir>
 					<show>public</show>
 				</configuration>
 				<executions>
