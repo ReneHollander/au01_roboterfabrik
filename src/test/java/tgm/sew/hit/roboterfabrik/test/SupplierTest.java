@@ -22,7 +22,7 @@ public class SupplierTest {
 	private final File logDir = new File("./test/log");
 
 	/**
-	 * Löscht die Files bevor sie neu erstellt werden
+	 * Loescht die Files bevor sie neu erstellt werden
 	 */
 	@Before
 	public void resetFiles() {
